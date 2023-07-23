@@ -1,0 +1,8 @@
+C:\Users\Admin\Dropbox\Congviec_TechHub\Projects\IoT_BMS\Firmware\A76xxMx_SDK_2023Jan15_LASE\sc_app/build/packag-simcom_demo/obj/utils/core_auth.o: \
+ utils/core_auth.c \
+ C:/Users/Admin/Dropbox/Congviec_TechHub/Projects/IoT_BMS/Firmware/A76xxMx_SDK_2023Jan15_LASE/sc_app/simcom_lib/inc/utils/core_auth.h \
+ C:/Users/Admin/Dropbox/Congviec_TechHub/Projects/IoT_BMS/Firmware/A76xxMx_SDK_2023Jan15_LASE/sc_app/simcom_lib/inc/utils/core_stdinc.h \
+ C:/Users/Admin/Dropbox/Congviec_TechHub/Projects/IoT_BMS/Firmware/A76xxMx_SDK_2023Jan15_LASE/sc_app/simcom_lib/inc/utils/core_string.h \
+ C:/Users/Admin/Dropbox/Congviec_TechHub/Projects/IoT_BMS/Firmware/A76xxMx_SDK_2023Jan15_LASE/sc_app/simcom_lib/inc/utils/aiot_state_api.h \
+ C:/Users/Admin/Dropbox/Congviec_TechHub/Projects/IoT_BMS/Firmware/A76xxMx_SDK_2023Jan15_LASE/sc_app/simcom_lib/inc/utils/aiot_sysdep_api.h \
+ C:/Users/Admin/Dropbox/Congviec_TechHub/Projects/IoT_BMS/Firmware/A76xxMx_SDK_2023Jan15_LASE/sc_app/simcom_lib/inc/utils/core_sha256.h

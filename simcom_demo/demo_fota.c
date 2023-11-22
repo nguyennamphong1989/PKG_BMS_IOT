@@ -86,7 +86,7 @@ void FotaDemo(void)
             {
 
                 struct SC_FotaApiParam param = {0};
-                strcpy(param.host , "47.108.134.22/system_patch.bin");
+                strcpy(param.host , "171.244.63.27/system_patch.bin");
                 strcpy(param.username , "111");
                 strcpy(param.password , "222");
                 param.mode = 1;

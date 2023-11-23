@@ -4,10 +4,10 @@
 #include "string.h"
 #include "stdlib.h"
 #include "stdio.h"
-#define MQTT_SEND_TIME (60*200)
+#define MQTT_SEND_TIME (30*200) //30 sec
 
 char loggerID[8] = "";
-UINT16 version = 1;
+UINT16 version = 7;
 /*
 Từ khóa "extern" chỉ ra 1 biến hoặc 1 hàm đã được khai báo ở 1 nơi
 khác trong mã nguồn.
@@ -899,10 +899,6 @@ void otaUpdate(INT8 *url)
     UINT8 pGreg = 0;
 
     pram.url = url;
-    memset(test_payload, 0, 50);
-    sprintf(test_payload, "\n Start downloading: %s\n",pram.url);
-    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-
     if (strncmp(pram.url, "https://", strlen("https://")) != 0 && strncmp(pram.url, "http://", strlen("http://")) != 0)
         return;
 
@@ -919,25 +915,26 @@ void otaUpdate(INT8 *url)
         sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
         return;
     }
-    PrintfResp("Firmware download OK\n");
+    memset(test_payload, 0, 50);
+    sprintf(test_payload, "\n Firmware download OK");
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
     ret = sAPI_AppPackageCrc(&gAppUpdateInfo);
     if (SC_APP_DOWNLOAD_SUCESSED == ret)
     {
-        PrintfResp("Firmware CRC ok, resetting...\n");
+        memset(test_payload, 0, 50);
+        sprintf(test_payload, "\n Firmware CRC ok, resetting...");
+        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
         sAPI_TaskSleep(200);
         sAPI_SysReset();
     }
     else
-        PrintfResp("Firmware CRC failed\n");
-}
-
-// Mục này cần sửa lại
-
-void Hello(){
+    {
         memset(test_payload, 0, 50);
-        sprintf(test_payload, "\n Thất bại thất bại!");
-        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload)); 
+        sprintf(test_payload, "\n Firmware CRC failed");
+        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));        
+    }
 }
+
 void MqttReceive(char *subtopic)
 {
         SIM_MSG_T msgQ_data_recv = {SIM_MSG_INIT, 0, -1, NULL}; // NULL pointer for msgQ_data_recv.arg3 is necessary!
@@ -952,9 +949,9 @@ void MqttReceive(char *subtopic)
         char *topic= sAPI_Malloc(200);
         char *payload= sAPI_Malloc(200);
         char *topic_buff = sAPI_Malloc(300);
-        memset(topic_buff,0,200);
+        memset(topic_buff,0,sizeof(topic_buff));
         char *payload_buff = sAPI_Malloc(300);
-        memset(payload_buff,0,200);
+        memset(payload_buff,0,sizeof(payload_buff));
                                    
         memset(test_payload, 0, 50);
         sprintf(test_payload, "\n Waiting for Update from Server!");
@@ -986,7 +983,7 @@ void MqttReceive(char *subtopic)
         {
 
             memset(test_payload, 0, 50);
-            sprintf(test_payload, "\n Command Received from Server!:%s\n",payload_buff);
+            sprintf(test_payload, "\n Command Received from Server: %s",payload_buff);
             sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
             // sAPI_UartWrite(SC_UART3, check,strlen(check));
 
@@ -1066,7 +1063,7 @@ void di_config(void)
 
 
     memset(test_payload, 0, 50);
-    sprintf(test_payload, "\n>>>> Check Power-On");
+    sprintf(test_payload, "\n>>>>---- Power-On -----<<<<");
     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
  
     sAPI_NetworkSetCtzu(1);
@@ -1081,7 +1078,7 @@ void di_config(void)
         SCsysTime_t t;
         sAPI_GetSysLocalTime(&t);
         memset(test_payload, 0, 50);
-        sprintf(test_payload, "\n>>>> Local Time: %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
+        sprintf(test_payload, "\n\n>> Local Time: %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
         sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
         memset(test_payload, 0, 50);
         sprintf(test_payload, "\n Imei: %s",imei_value);
@@ -1153,7 +1150,7 @@ void di_config(void)
         if (SC_MQTT_RESULT_SUCCESS == ret)
         {
             memset(test_payload, 0, 50);
-            sprintf(test_payload, "\n CONNECTION OK!\n");
+            sprintf(test_payload, "\n CONNECTION OK!");
             sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));            
         }
         else

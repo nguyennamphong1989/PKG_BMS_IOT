@@ -1742,6 +1742,8 @@ Discarded input sections
  .text          0x00000000        0x0 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .data          0x00000000        0x0 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .bss           0x00000000        0x0 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
+ .text.PrintfResp
+                0x00000000       0x20 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .text.PrintfOptionMenu
                 0x00000000       0xc0 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .text.GetParamFromUart
@@ -2617,7 +2619,6 @@ Discarded input sections
  .text.GetCGreg
                 0x00000000       0x40 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
  .text.GetCpsi  0x00000000       0x74 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .text.Hello    0x00000000       0x44 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
  .bss.parameters_update
                 0x00000000        0x1 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
  .data.first_start
@@ -2632,8 +2633,6 @@ Discarded input sections
                 0x00000000       0x7f build/packag-simcom_demo/simcom_demo.lib(di_config.o)
  .rodata.GetCreg.str1.1
                 0x00000000       0x30 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .rodata.Hello.str1.1
-                0x00000000       0x1d build/packag-simcom_demo/simcom_demo.lib(di_config.o)
  .text          0x00000000        0x0 build/packag-simcom_demo/simcom_demo.lib(di_config2.o)
  .data          0x00000000        0x0 build/packag-simcom_demo/simcom_demo.lib(di_config2.o)
  .bss           0x00000000        0x0 build/packag-simcom_demo/simcom_demo.lib(di_config2.o)
@@ -3690,1838 +3689,944 @@ Linker script and memory map
                 0x7e9015b8        0xc build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
                 0x7e9015b8                sTask_SimcomUIProcesser
 
-.text.PrintfResp
-                0x7e9015c4       0x20
- .text.PrintfResp
-                0x7e9015c4       0x20 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
-                0x7e9015c4                PrintfResp
-
 .text.sAPP_SimcomUIDemo
-                0x7e9015e4       0xa4
+                0x7e9015c4       0xa4
  .text.sAPP_SimcomUIDemo
-                0x7e9015e4       0xa4 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
-                0x7e9015e4                sAPP_SimcomUIDemo
+                0x7e9015c4       0xa4 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
+                0x7e9015c4                sAPP_SimcomUIDemo
 
 .text.simcom_printf
-                0x7e901688       0x4c
+                0x7e901668       0x4c
  .text.simcom_printf
-                0x7e901688       0x4c build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-                0x7e901688                simcom_printf
+                0x7e901668       0x4c build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e901668                simcom_printf
 
 .text.sTask_HelloWorldProcesser
-                0x7e9016d8       0x44
+                0x7e9016b8       0x44
  .text.sTask_HelloWorldProcesser
-                0x7e9016d8       0x44 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-                0x7e9016d8                sTask_HelloWorldProcesser
+                0x7e9016b8       0x44 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e9016b8                sTask_HelloWorldProcesser
 
 .text.sAPP_HelloWorldDemo
-                0x7e90171c       0x50
+                0x7e9016fc       0x50
  .text.sAPP_HelloWorldDemo
-                0x7e90171c       0x50 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-                0x7e90171c                sAPP_HelloWorldDemo
+                0x7e9016fc       0x50 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e9016fc                sAPP_HelloWorldDemo
 
-.text.GetCSQ    0x7e90176c       0x64
- .text.GetCSQ   0x7e90176c       0x64 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e90176c                GetCSQ
+.text.GetCSQ    0x7e90174c       0x64
+ .text.GetCSQ   0x7e90174c       0x64 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e90174c                GetCSQ
 
 .text.Publish_array
-                0x7e9017d0       0x78
+                0x7e9017b0       0x78
  .text.Publish_array
-                0x7e9017d0       0x78 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e9017d0                Publish_array
+                0x7e9017b0       0x78 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e9017b0                Publish_array
 
-.text.addMsg    0x7e901848       0x20
- .text.addMsg   0x7e901848       0x20 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e901848                addMsg
+.text.addMsg    0x7e901828       0x20
+ .text.addMsg   0x7e901828       0x20 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e901828                addMsg
 
 .text.uart_read
-                0x7e901868      0xb18
+                0x7e901848      0xaa0
  .text.uart_read
-                0x7e901868      0xb18 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e901868                uart_read
+                0x7e901848      0xaa0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e901848                uart_read
 
 .text.otaUpdate
-                0x7e902380      0x12c
+                0x7e9022e8      0x130
  .text.otaUpdate
-                0x7e902380      0x12c build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e902380                otaUpdate
+                0x7e9022e8      0x130 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e9022e8                otaUpdate
 
 .text.uart_send
-                0x7e9024ac      0x2e0
+                0x7e902418      0x2e0
  .text.uart_send
-<<<<<<< HEAD
-                0x7e9024ac      0x2e0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e9024ac                uart_send
+                0x7e902418      0x2e0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e902418                uart_send
 
 .text.MqttReceive
-                0x7e90278c      0x1b0
+                0x7e9026f8      0x1a8
  .text.MqttReceive
-                0x7e90278c      0x1b0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e90278c                MqttReceive
+                0x7e9026f8      0x1a8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e9026f8                MqttReceive
 
 .text.di_config
-                0x7e90293c      0x3e8
+                0x7e9028a0      0x3e8
  .text.di_config
-                0x7e90293c      0x3e8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e90293c                di_config
+                0x7e9028a0      0x3e8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e9028a0                di_config
 
-.text.get_sAPI  0x7e902d24     0x1254
+.text.get_sAPI  0x7e902c88     0x1254
  .text.get_sAPI
-                0x7e902d24     0x1254 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e902d24                get_sAPI
+                0x7e902c88     0x1254 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e902c88                get_sAPI
 
 .text.sAPI_Malloc
-                0x7e903f78       0x10
+                0x7e903edc       0x10
  .text.sAPI_Malloc
-                0x7e903f78       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f78                sAPI_Malloc
+                0x7e903edc       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e903edc                sAPI_Malloc
 
 .text.sAPI_Free
-                0x7e903f88       0x10
+                0x7e903eec       0x10
  .text.sAPI_Free
-                0x7e903f88       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f88                sAPI_Free
+                0x7e903eec       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e903eec                sAPI_Free
 
 .text._malloc_r
-                0x7e903f98        0xc
+                0x7e903efc        0xc
  .text._malloc_r
-                0x7e903f98        0xc simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f98                _malloc_r
+                0x7e903efc        0xc simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e903efc                _malloc_r
 
 .text._calloc_r
-                0x7e903fa4       0x24
+                0x7e903f08       0x24
  .text._calloc_r
-                0x7e903fa4       0x24 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903fa4                _calloc_r
+                0x7e903f08       0x24 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e903f08                _calloc_r
 
 .text._realloc_r
-                0x7e903fc8       0x30
+                0x7e903f2c       0x30
  .text._realloc_r
-                0x7e903fc8       0x30 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903fc8                _realloc_r
+                0x7e903f2c       0x30 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e903f2c                _realloc_r
 
-.text._free_r   0x7e903ff8       0x10
- .text._free_r  0x7e903ff8       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903ff8                _free_r
+.text._free_r   0x7e903f5c       0x10
+ .text._free_r  0x7e903f5c       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e903f5c                _free_r
 
-.text.atoi      0x7e904008        0x8
- .text.atoi     0x7e904008        0x8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-atoi.o)
-                0x7e904008                atoi
+.text.atoi      0x7e903f6c        0x8
+ .text.atoi     0x7e903f6c        0x8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-atoi.o)
+                0x7e903f6c                atoi
 
 .text.__locale_ctype_ptr_l
-                0x7e904010        0x8
+                0x7e903f74        0x8
  .text.__locale_ctype_ptr_l
-                0x7e904010        0x8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
-                0x7e904010                __locale_ctype_ptr_l
+                0x7e903f74        0x8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
+                0x7e903f74                __locale_ctype_ptr_l
 
 .text.__ascii_mbtowc
-                0x7e904018       0x24
+                0x7e903f7c       0x24
  .text.__ascii_mbtowc
-                0x7e904018       0x24 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mbtowc_r.o)
-                0x7e904018                __ascii_mbtowc
+                0x7e903f7c       0x24 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mbtowc_r.o)
+                0x7e903f7c                __ascii_mbtowc
 
-.text.memset    0x7e90403c       0x98
- .text.memset   0x7e90403c       0x98 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memset.o)
-                0x7e90403c                memset
+.text.memset    0x7e903fa0       0x98
+ .text.memset   0x7e903fa0       0x98 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memset.o)
+                0x7e903fa0                memset
 
-.text.snprintf  0x7e9040d4       0x88
+.text.snprintf  0x7e904038       0x88
  .text.snprintf
-                0x7e9040d4       0x88 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-snprintf.o)
-                0x7e9040d4                snprintf
+                0x7e904038       0x88 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-snprintf.o)
+                0x7e904038                snprintf
 
-.text.sprintf   0x7e90415c       0x48
- .text.sprintf  0x7e90415c       0x48 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-sprintf.o)
-                0x7e90415c                sprintf
+.text.sprintf   0x7e9040c0       0x48
+ .text.sprintf  0x7e9040c0       0x48 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-sprintf.o)
+                0x7e9040c0                sprintf
 
-.text.strcpy    0x7e9041a4       0xbc
- .text.strcpy   0x7e9041a4       0xbc E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strcpy.o)
-                0x7e9041a4                strcpy
+.text.strcpy    0x7e904108       0xbc
+ .text.strcpy   0x7e904108       0xbc E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strcpy.o)
+                0x7e904108                strcpy
 
-.text.strlen    0x7e904260       0x5c
- .text.strlen   0x7e904260       0x5c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strlen-stub.o)
-                0x7e904260                strlen
+.text.strlen    0x7e9041c4       0x5c
+ .text.strlen   0x7e9041c4       0x5c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strlen-stub.o)
+                0x7e9041c4                strlen
 
-.text.strncmp   0x7e9042bc       0x94
- .text.strncmp  0x7e9042bc       0x94 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncmp.o)
-                0x7e9042bc                strncmp
+.text.strncmp   0x7e904220       0x94
+ .text.strncmp  0x7e904220       0x94 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncmp.o)
+                0x7e904220                strncmp
 
-.text.strncpy   0x7e904350       0x70
- .text.strncpy  0x7e904350       0x70 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncpy.o)
-                0x7e904350                strncpy
+.text.strncpy   0x7e9042b4       0x70
+ .text.strncpy  0x7e9042b4       0x70 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncpy.o)
+                0x7e9042b4                strncpy
 
 .text._strtol_l.isra.0
-                0x7e9043c0      0x124
+                0x7e904324      0x124
  .text._strtol_l.isra.0
-                0x7e9043c0      0x124 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
+                0x7e904324      0x124 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
 
-.text.strtol    0x7e9044e4       0x30
- .text.strtol   0x7e9044e4       0x30 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
-                0x7e9044e4                strtol
+.text.strtol    0x7e904448       0x30
+ .text.strtol   0x7e904448       0x30 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
+                0x7e904448                strtol
 
 .text._svfprintf_r
-                0x7e904514     0x19c0
+                0x7e904478     0x19c0
  .text._svfprintf_r
-                0x7e904514     0x19c0 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
-                0x7e904514                _svfprintf_r
+                0x7e904478     0x19c0 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
+                0x7e904478                _svfprintf_r
 
 .text.__ascii_wctomb
-                0x7e905ed4       0x18
+                0x7e905e38       0x18
  .text.__ascii_wctomb
-                0x7e905ed4       0x18 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-wctomb_r.o)
-                0x7e905ed4                __ascii_wctomb
+                0x7e905e38       0x18 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-wctomb_r.o)
+                0x7e905e38                __ascii_wctomb
 
-.text.quorem    0x7e905eec      0x140
- .text.quorem   0x7e905eec      0x140 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
+.text.quorem    0x7e905e50      0x140
+ .text.quorem   0x7e905e50      0x140 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
 
-.text._dtoa_r   0x7e906030      0xf14
- .text._dtoa_r  0x7e906030      0xf14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
-                0x7e906030                _dtoa_r
+.text._dtoa_r   0x7e905f90      0xf14
+ .text._dtoa_r  0x7e905f90      0xf14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
+                0x7e905f90                _dtoa_r
 
 .text._localeconv_r
-                0x7e906f44       0x20
+                0x7e906ea4       0x20
  .text._localeconv_r
-                0x7e906f44       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-localeconv.o)
-                0x7e906f44                _localeconv_r
+                0x7e906ea4       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-localeconv.o)
+                0x7e906ea4                _localeconv_r
 
-.text.memchr    0x7e906f64       0x8c
- .text.memchr   0x7e906f64       0x8c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memchr-stub.o)
-                0x7e906f64                memchr
+.text.memchr    0x7e906ec4       0x8c
+ .text.memchr   0x7e906ec4       0x8c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memchr-stub.o)
+                0x7e906ec4                memchr
 
-.text._Balloc   0x7e906ff0       0x4c
- .text._Balloc  0x7e906ff0       0x4c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e906ff0                _Balloc
+.text._Balloc   0x7e906f50       0x4c
+ .text._Balloc  0x7e906f50       0x4c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e906f50                _Balloc
 
-.text._Bfree    0x7e90703c       0x14
- .text._Bfree   0x7e90703c       0x14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e90703c                _Bfree
+.text._Bfree    0x7e906f9c       0x14
+ .text._Bfree   0x7e906f9c       0x14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e906f9c                _Bfree
 
 .text.__multadd
-                0x7e907050       0x88
+                0x7e906fb0       0x88
  .text.__multadd
-                0x7e907050       0x88 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907050                __multadd
+                0x7e906fb0       0x88 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e906fb0                __multadd
 
 .text.__hi0bits
-                0x7e9070d8       0x3c
+                0x7e907038       0x3c
  .text.__hi0bits
-                0x7e9070d8       0x3c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9070d8                __hi0bits
+                0x7e907038       0x3c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e907038                __hi0bits
 
 .text.__lo0bits
-                0x7e907114       0x5c
+                0x7e907074       0x5c
  .text.__lo0bits
-                0x7e907114       0x5c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907114                __lo0bits
+                0x7e907074       0x5c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e907074                __lo0bits
 
-.text.__i2b     0x7e907170       0x14
- .text.__i2b    0x7e907170       0x14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907170                __i2b
+.text.__i2b     0x7e9070d0       0x14
+ .text.__i2b    0x7e9070d0       0x14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e9070d0                __i2b
 
 .text.__multiply
-                0x7e907184      0x158
+                0x7e9070e4      0x158
  .text.__multiply
-                0x7e907184      0x158 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907184                __multiply
+                0x7e9070e4      0x158 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e9070e4                __multiply
 
 .text.__pow5mult
-                0x7e9072dc       0xa4
+                0x7e90723c       0xa4
  .text.__pow5mult
-                0x7e9072dc       0xa4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9072dc                __pow5mult
+                0x7e90723c       0xa4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e90723c                __pow5mult
 
-.text.__lshift  0x7e907380       0xb8
+.text.__lshift  0x7e9072e0       0xb8
  .text.__lshift
-                0x7e907380       0xb8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907380                __lshift
+                0x7e9072e0       0xb8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e9072e0                __lshift
 
-.text.__mcmp    0x7e907438       0x38
- .text.__mcmp   0x7e907438       0x38 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907438                __mcmp
+.text.__mcmp    0x7e907398       0x38
+ .text.__mcmp   0x7e907398       0x38 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e907398                __mcmp
 
-.text.__mdiff   0x7e907470      0x108
- .text.__mdiff  0x7e907470      0x108 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907470                __mdiff
+.text.__mdiff   0x7e9073d0      0x108
+ .text.__mdiff  0x7e9073d0      0x108 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e9073d0                __mdiff
 
-.text.__d2b     0x7e907578       0xac
- .text.__d2b    0x7e907578       0xac E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907578                __d2b
+.text.__d2b     0x7e9074d8       0xac
+ .text.__d2b    0x7e9074d8       0xac E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e9074d8                __d2b
 
-.text.frexp     0x7e907624       0x68
- .text.frexp    0x7e907624       0x68 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-s_frexp.o)
-                0x7e907624                frexp
+.text.frexp     0x7e907584       0x68
+ .text.frexp    0x7e907584       0x68 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-s_frexp.o)
+                0x7e907584                frexp
 
 .text.__ssprint_r
-                0x7e90768c       0xf8
+                0x7e9075ec       0xf8
  .text.__ssprint_r
-                0x7e90768c       0xf8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfiprintf.o)
-                0x7e90768c                __ssprint_r
+                0x7e9075ec       0xf8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfiprintf.o)
+                0x7e9075ec                __ssprint_r
 
-.text.memmove   0x7e907784       0xc8
- .text.memmove  0x7e907784       0xc8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memmove.o)
-                0x7e907784                memmove
+.text.memmove   0x7e9076e4       0xc8
+ .text.memmove  0x7e9076e4       0xc8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memmove.o)
+                0x7e9076e4                memmove
 
-.rodata         0x7e90784c       0x2a
+.rodata         0x7e9077ac       0x2a
  *(.rodata)
- .rodata        0x7e90784c       0x2a build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .rodata        0x7e9077ac       0x2a build/packag-simcom_demo/simcom_demo.lib(di_config.o)
 
 .rodata.Application.str1.1
-                0x7e907876       0x52
+                0x7e9077d6       0x52
  .rodata.Application.str1.1
-                0x7e907876       0x52 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
+                0x7e9077d6       0x52 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
 
 .rodata.__func__.9069
-                0x7e9078c8       0x13
+                0x7e907828       0x13
  .rodata.__func__.9069
-                0x7e9078c8       0x13 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
+                0x7e907828       0x13 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
 
 .rodata.sAPP_UrcTask.str1.1
-                0x7e9078db       0x26
+                0x7e90783b       0x26
  .rodata.sAPP_UrcTask.str1.1
-                0x7e9078db       0x26 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
+                0x7e90783b       0x26 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
 
 .rodata.sTask_UrcProcesser.str1.1
-                0x7e907901      0x33d
+                0x7e907861      0x33d
  .rodata.sTask_UrcProcesser.str1.1
-                0x7e907901      0x33d build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
+                0x7e907861      0x33d build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
 
 .rodata.Uart2CBFunc.str1.1
-                0x7e907c3e       0x23
+                0x7e907b9e       0x23
  .rodata.Uart2CBFunc.str1.1
-                0x7e907c3e       0x23 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907b9e       0x23 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.Uart3CBFuncEx.str1.1
-                0x7e907c61       0x23
+                0x7e907bc1       0x23
  .rodata.Uart3CBFuncEx.str1.1
-                0x7e907c61       0x23 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907bc1       0x23 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.__func__.9073
-                0x7e907c84        0xc
+                0x7e907be4        0xc
  .rodata.__func__.9073
-                0x7e907c84        0xc build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907be4        0xc build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.__func__.9096
-                0x7e907c90        0xe
+                0x7e907bf0        0xe
  .rodata.__func__.9096
-                0x7e907c90        0xe build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907bf0        0xe build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.__func__.9103
-                0x7e907c9e        0xe
+                0x7e907bfe        0xe
  .rodata.__func__.9103
-                0x7e907c9e        0xe build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907bfe        0xe build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.sAPP_UartTask.str1.1
-                0x7e907cac       0xab
+                0x7e907c0c       0xab
  .rodata.sAPP_UartTask.str1.1
-                0x7e907cac       0xab build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907c0c       0xab build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.sendMsgToUIDemo.str1.1
-                0x7e907d57       0x1d
+                0x7e907cb7       0x1d
  .rodata.sendMsgToUIDemo.str1.1
-                0x7e907d57       0x1d build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
+                0x7e907cb7       0x1d build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
 
 .rodata.UsbVcomCBFuncEx.str1.1
-                0x7e907d74       0x26
+                0x7e907cd4       0x26
  .rodata.UsbVcomCBFuncEx.str1.1
-                0x7e907d74       0x26 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
+                0x7e907cd4       0x26 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
 
 .rodata.__func__.9058
-                0x7e907d9a       0x10
+                0x7e907cfa       0x10
  .rodata.__func__.9058
-                0x7e907d9a       0x10 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
+                0x7e907cfa       0x10 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
 
 .rodata.sAPP_UsbVcomTask.str1.1
-                0x7e907daa       0x2b
+                0x7e907d0a       0x2b
  .rodata.sAPP_UsbVcomTask.str1.1
-                0x7e907daa       0x2b build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
+                0x7e907d0a       0x2b build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
 
 .rodata.PowerKeyIntCBFunc.str1.1
-                0x7e907dd5       0x10
+                0x7e907d35       0x10
  .rodata.PowerKeyIntCBFunc.str1.1
-                0x7e907dd5       0x10 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
+                0x7e907d35       0x10 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
 
 .rodata.__func__.9048
-                0x7e907de5       0x12
+                0x7e907d45       0x12
  .rodata.__func__.9048
-                0x7e907de5       0x12 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
+                0x7e907d45       0x12 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
 
 .rodata.__func__.9052
-                0x7e907df7        0xd
+                0x7e907d57        0xd
  .rodata.__func__.9052
-                0x7e907df7        0xd build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
+                0x7e907d57        0xd build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
 
 .rodata.sAPP_KeyTask.str1.1
-                0x7e907e04        0x9
+                0x7e907d64        0x9
  .rodata.sAPP_KeyTask.str1.1
-                0x7e907e04        0x9 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
+                0x7e907d64        0x9 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
 
 .rodata.sAPP_SimcomUIDemo.str1.1
-                0x7e907e0d       0x6c
+                0x7e907d6d       0x6c
  .rodata.sAPP_SimcomUIDemo.str1.1
-                0x7e907e0d       0x6c build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
+                0x7e907d6d       0x6c build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
 
 .rodata.sAPP_HelloWorldDemo.str1.1
-                0x7e907e79       0x33
+                0x7e907dd9       0x33
  .rodata.sAPP_HelloWorldDemo.str1.1
-                0x7e907e79       0x33 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e907dd9       0x33 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
 
 .rodata.sTask_HelloWorldProcesser.str1.1
-                0x7e907eac       0x28
+                0x7e907e0c       0x28
  .rodata.sTask_HelloWorldProcesser.str1.1
-                0x7e907eac       0x28 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e907e0c       0x28 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
 
 .rodata.simcom_printf.str1.1
-                0x7e907ed4       0x13
+                0x7e907e34       0x13
  .rodata.simcom_printf.str1.1
-                0x7e907ed4       0x13 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e907e34       0x13 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
 
 .rodata.GetCSQ.str1.1
-                0x7e907ee7       0x2d
+                0x7e907e47       0x2d
  .rodata.GetCSQ.str1.1
-                0x7e907ee7       0x2d build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e907e47       0x2d build/packag-simcom_demo/simcom_demo.lib(di_config.o)
 
 .rodata.MqttReceive.str1.1
-                0x7e907f14       0x46
+                0x7e907e74       0x45
  .rodata.MqttReceive.str1.1
-                0x7e907f14       0x46 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e907e74       0x45 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
 
 .rodata.Publish_array.str1.1
-                0x7e907f5a        0xc
+                0x7e907eb9        0xc
  .rodata.Publish_array.str1.1
-                0x7e907f5a        0xc build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e907eb9        0xc build/packag-simcom_demo/simcom_demo.lib(di_config.o)
 
 .rodata.di_config.str1.1
-                0x7e907f66       0xfb
+                0x7e907ec5      0x101
  .rodata.di_config.str1.1
-                0x7e907f66       0xfb build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                                 0xfe (size before relaxing)
+                0x7e907ec5      0x101 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                                0x104 (size before relaxing)
 
 .rodata.otaUpdate.str1.1
-                0x7e908061       0xb0
+                0x7e907fc6       0x9a
  .rodata.otaUpdate.str1.1
-                0x7e908061       0xb0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e907fc6       0x9a build/packag-simcom_demo/simcom_demo.lib(di_config.o)
 
 .rodata.uart_read.str1.1
-                0x7e908111      0x2cc
+                0x7e908060      0x2f4
  .rodata.uart_read.str1.1
-                0x7e908111      0x2cc build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                                0x2de (size before relaxing)
+                0x7e908060      0x2f4 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                                0x306 (size before relaxing)
 
 .rodata.uart_send.str1.1
-                0x7e9083dd       0x48
+                0x7e908354       0x48
  .rodata.uart_send.str1.1
-                0x7e9083dd       0x48 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e908354       0x48 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
 
 .rodata._setlocale_r.str1.4
-                0x7e908428       0x10
+                0x7e90839c       0x10
  .rodata._setlocale_r.str1.4
-                0x7e908428       0x10 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
+                0x7e90839c       0x10 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
                                   0xd (size before relaxing)
 
-.rodata.str1.4  0x7e908438        0x4
+.rodata.str1.4  0x7e9083ac        0x4
  .rodata.str1.4
-                0x7e908438        0x4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
+                0x7e9083ac        0x4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
                                   0x2 (size before relaxing)
 
 .rodata._svfprintf_r.str1.4
-                0x7e90843c       0x44
+                0x7e9083b0       0x44
  .rodata._svfprintf_r.str1.4
-                0x7e90843c       0x44 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
+                0x7e9083b0       0x44 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
                                  0x42 (size before relaxing)
 
 .rodata.blanks.7315
-                0x7e908480       0x10
+                0x7e9083f4       0x10
  .rodata.blanks.7315
-                0x7e908480       0x10 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
+                0x7e9083f4       0x10 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
 
 .rodata.zeroes.7316
-                0x7e908490       0x10
+                0x7e908404       0x10
  .rodata.zeroes.7316
-                0x7e908490       0x10 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
+                0x7e908404       0x10 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
 
 .rodata._ctype_
-                0x7e9084a0      0x101
+                0x7e908414      0x101
  .rodata._ctype_
-                0x7e9084a0      0x101 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-ctype_.o)
-                0x7e9084a0                _ctype_
+                0x7e908414      0x101 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-ctype_.o)
+                0x7e908414                _ctype_
 
 .rodata._dtoa_r.str1.4
-                0x7e9085a4       0x14
+                0x7e908518       0x14
  .rodata._dtoa_r.str1.4
-                0x7e9085a4       0x14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
+                0x7e908518       0x14 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
 
 .rodata.__mprec_bigtens
-                0x7e9085b8       0x28
+                0x7e908530       0x28
  .rodata.__mprec_bigtens
-                0x7e9085b8       0x28 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9085b8                __mprec_bigtens
+                0x7e908530       0x28 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e908530                __mprec_bigtens
 
 .rodata.__mprec_tens
-                0x7e9085e0       0xc8
+                0x7e908558       0xc8
  .rodata.__mprec_tens
-                0x7e9085e0       0xc8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9085e0                __mprec_tens
+                0x7e908558       0xc8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e908558                __mprec_tens
 
 .rodata.p05.6092
-                0x7e9086a8        0xc
+                0x7e908620        0xc
  .rodata.p05.6092
-                0x7e9086a8        0xc E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+                0x7e908620        0xc E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
 
-.data           0x7e9086b4        0x0
-=======
-                0x7e901994      0x36c build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e901994                uart_send
-
-.text.uart_read
-                0x7e901d00      0xac4
- .text.uart_read
-                0x7e901d00      0xac4 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e901d00                uart_read
-
-.text.MqttReceive
-                0x7e9027c4      0x1b0
- .text.MqttReceive
-                0x7e9027c4      0x1b0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e9027c4                MqttReceive
-
-.text.di_config
-                0x7e902974      0x334
- .text.di_config
-                0x7e902974      0x334 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e902974                di_config
-
-.text.get_sAPI  0x7e902ca8     0x1254
- .text.get_sAPI
-                0x7e902ca8     0x1254 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e902ca8                get_sAPI
-
-.text.sAPI_Malloc
-                0x7e903efc       0x10
- .text.sAPI_Malloc
-                0x7e903efc       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903efc                sAPI_Malloc
-
-.text.sAPI_Free
-                0x7e903f0c       0x10
- .text.sAPI_Free
-                0x7e903f0c       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f0c                sAPI_Free
-
-.text._malloc_r
-                0x7e903f1c        0xc
- .text._malloc_r
-                0x7e903f1c        0xc simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f1c                _malloc_r
-
-.text._calloc_r
-                0x7e903f28       0x24
- .text._calloc_r
-                0x7e903f28       0x24 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f28                _calloc_r
-
-.text._realloc_r
-                0x7e903f4c       0x30
- .text._realloc_r
-                0x7e903f4c       0x30 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f4c                _realloc_r
-
-.text._free_r   0x7e903f7c       0x10
- .text._free_r  0x7e903f7c       0x10 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e903f7c                _free_r
-
-.text.atoi      0x7e903f8c        0x8
- .text.atoi     0x7e903f8c        0x8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-atoi.o)
-                0x7e903f8c                atoi
-
-.text.__locale_ctype_ptr_l
-                0x7e903f94        0x8
- .text.__locale_ctype_ptr_l
-                0x7e903f94        0x8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
-                0x7e903f94                __locale_ctype_ptr_l
-
-.text.__ascii_mbtowc
-                0x7e903f9c       0x24
- .text.__ascii_mbtowc
-                0x7e903f9c       0x24 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mbtowc_r.o)
-                0x7e903f9c                __ascii_mbtowc
-
-.text.memset    0x7e903fc0       0x98
- .text.memset   0x7e903fc0       0x98 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memset.o)
-                0x7e903fc0                memset
-
-.text.snprintf  0x7e904058       0x88
- .text.snprintf
-                0x7e904058       0x88 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-snprintf.o)
-                0x7e904058                snprintf
-
-.text.sprintf   0x7e9040e0       0x48
- .text.sprintf  0x7e9040e0       0x48 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-sprintf.o)
-                0x7e9040e0                sprintf
-
-.text.strcpy    0x7e904128       0xbc
- .text.strcpy   0x7e904128       0xbc D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strcpy.o)
-                0x7e904128                strcpy
-
-.text.strlen    0x7e9041e4       0x5c
- .text.strlen   0x7e9041e4       0x5c D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strlen-stub.o)
-                0x7e9041e4                strlen
-
-.text.strncmp   0x7e904240       0x94
- .text.strncmp  0x7e904240       0x94 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncmp.o)
-                0x7e904240                strncmp
-
-.text.strncpy   0x7e9042d4       0x70
- .text.strncpy  0x7e9042d4       0x70 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncpy.o)
-                0x7e9042d4                strncpy
-
-.text._strtol_l.isra.0
-                0x7e904344      0x124
- .text._strtol_l.isra.0
-                0x7e904344      0x124 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
-
-.text.strtol    0x7e904468       0x30
- .text.strtol   0x7e904468       0x30 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
-                0x7e904468                strtol
-
-.text._svfprintf_r
-                0x7e904498     0x19c0
- .text._svfprintf_r
-                0x7e904498     0x19c0 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
-                0x7e904498                _svfprintf_r
-
-.text.__ascii_wctomb
-                0x7e905e58       0x18
- .text.__ascii_wctomb
-                0x7e905e58       0x18 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-wctomb_r.o)
-                0x7e905e58                __ascii_wctomb
-
-.text.quorem    0x7e905e70      0x140
- .text.quorem   0x7e905e70      0x140 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
-
-.text._dtoa_r   0x7e905fb0      0xf14
- .text._dtoa_r  0x7e905fb0      0xf14 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
-                0x7e905fb0                _dtoa_r
-
-.text._localeconv_r
-                0x7e906ec4       0x20
- .text._localeconv_r
-                0x7e906ec4       0x20 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-localeconv.o)
-                0x7e906ec4                _localeconv_r
-
-.text.memchr    0x7e906ee4       0x8c
- .text.memchr   0x7e906ee4       0x8c D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memchr-stub.o)
-                0x7e906ee4                memchr
-
-.text._Balloc   0x7e906f70       0x4c
- .text._Balloc  0x7e906f70       0x4c D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e906f70                _Balloc
-
-.text._Bfree    0x7e906fbc       0x14
- .text._Bfree   0x7e906fbc       0x14 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e906fbc                _Bfree
-
-.text.__multadd
-                0x7e906fd0       0x88
- .text.__multadd
-                0x7e906fd0       0x88 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e906fd0                __multadd
-
-.text.__hi0bits
-                0x7e907058       0x3c
- .text.__hi0bits
-                0x7e907058       0x3c D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907058                __hi0bits
-
-.text.__lo0bits
-                0x7e907094       0x5c
- .text.__lo0bits
-                0x7e907094       0x5c D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907094                __lo0bits
-
-.text.__i2b     0x7e9070f0       0x14
- .text.__i2b    0x7e9070f0       0x14 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9070f0                __i2b
-
-.text.__multiply
-                0x7e907104      0x158
- .text.__multiply
-                0x7e907104      0x158 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907104                __multiply
-
-.text.__pow5mult
-                0x7e90725c       0xa4
- .text.__pow5mult
-                0x7e90725c       0xa4 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e90725c                __pow5mult
-
-.text.__lshift  0x7e907300       0xb8
- .text.__lshift
-                0x7e907300       0xb8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e907300                __lshift
-
-.text.__mcmp    0x7e9073b8       0x38
- .text.__mcmp   0x7e9073b8       0x38 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9073b8                __mcmp
-
-.text.__mdiff   0x7e9073f0      0x108
- .text.__mdiff  0x7e9073f0      0x108 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9073f0                __mdiff
-
-.text.__d2b     0x7e9074f8       0xac
- .text.__d2b    0x7e9074f8       0xac D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9074f8                __d2b
-
-.text.frexp     0x7e9075a4       0x68
- .text.frexp    0x7e9075a4       0x68 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-s_frexp.o)
-                0x7e9075a4                frexp
-
-.text.__ssprint_r
-                0x7e90760c       0xf8
- .text.__ssprint_r
-                0x7e90760c       0xf8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfiprintf.o)
-                0x7e90760c                __ssprint_r
-
-.text.memmove   0x7e907704       0xc8
- .text.memmove  0x7e907704       0xc8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memmove.o)
-                0x7e907704                memmove
-
-.rodata         0x7e9077cc       0x2a
- *(.rodata)
- .rodata        0x7e9077cc       0x2a build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-
-.rodata.Application.str1.1
-                0x7e9077f6       0x52
- .rodata.Application.str1.1
-                0x7e9077f6       0x52 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
-
-.rodata.__func__.9069
-                0x7e907848       0x13
- .rodata.__func__.9069
-                0x7e907848       0x13 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
-
-.rodata.sAPP_UrcTask.str1.1
-                0x7e90785b       0x26
- .rodata.sAPP_UrcTask.str1.1
-                0x7e90785b       0x26 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
-
-.rodata.sTask_UrcProcesser.str1.1
-                0x7e907881      0x33d
- .rodata.sTask_UrcProcesser.str1.1
-                0x7e907881      0x33d build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
-
-.rodata.Uart2CBFunc.str1.1
-                0x7e907bbe       0x23
- .rodata.Uart2CBFunc.str1.1
-                0x7e907bbe       0x23 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.Uart3CBFuncEx.str1.1
-                0x7e907be1       0x23
- .rodata.Uart3CBFuncEx.str1.1
-                0x7e907be1       0x23 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.__func__.9073
-                0x7e907c04        0xc
- .rodata.__func__.9073
-                0x7e907c04        0xc build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.__func__.9096
-                0x7e907c10        0xe
- .rodata.__func__.9096
-                0x7e907c10        0xe build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.__func__.9103
-                0x7e907c1e        0xe
- .rodata.__func__.9103
-                0x7e907c1e        0xe build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.sAPP_UartTask.str1.1
-                0x7e907c2c       0xab
- .rodata.sAPP_UartTask.str1.1
-                0x7e907c2c       0xab build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.sendMsgToUIDemo.str1.1
-                0x7e907cd7       0x1d
- .rodata.sendMsgToUIDemo.str1.1
-                0x7e907cd7       0x1d build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
-
-.rodata.UsbVcomCBFuncEx.str1.1
-                0x7e907cf4       0x26
- .rodata.UsbVcomCBFuncEx.str1.1
-                0x7e907cf4       0x26 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
-
-.rodata.__func__.9058
-                0x7e907d1a       0x10
- .rodata.__func__.9058
-                0x7e907d1a       0x10 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
-
-.rodata.sAPP_UsbVcomTask.str1.1
-                0x7e907d2a       0x2b
- .rodata.sAPP_UsbVcomTask.str1.1
-                0x7e907d2a       0x2b build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
-
-.rodata.PowerKeyIntCBFunc.str1.1
-                0x7e907d55       0x10
- .rodata.PowerKeyIntCBFunc.str1.1
-                0x7e907d55       0x10 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
-
-.rodata.__func__.9048
-                0x7e907d65       0x12
- .rodata.__func__.9048
-                0x7e907d65       0x12 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
-
-.rodata.__func__.9052
-                0x7e907d77        0xd
- .rodata.__func__.9052
-                0x7e907d77        0xd build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
-
-.rodata.sAPP_KeyTask.str1.1
-                0x7e907d84        0x9
- .rodata.sAPP_KeyTask.str1.1
-                0x7e907d84        0x9 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
-
-.rodata.sAPP_SimcomUIDemo.str1.1
-                0x7e907d8d       0x6c
- .rodata.sAPP_SimcomUIDemo.str1.1
-                0x7e907d8d       0x6c build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
-
-.rodata.sAPP_HelloWorldDemo.str1.1
-                0x7e907df9       0x33
- .rodata.sAPP_HelloWorldDemo.str1.1
-                0x7e907df9       0x33 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-
-.rodata.sTask_HelloWorldProcesser.str1.1
-                0x7e907e2c       0x28
- .rodata.sTask_HelloWorldProcesser.str1.1
-                0x7e907e2c       0x28 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-
-.rodata.simcom_printf.str1.1
-                0x7e907e54       0x13
- .rodata.simcom_printf.str1.1
-                0x7e907e54       0x13 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-
-.rodata.GetCSQ.str1.1
-                0x7e907e67       0x2d
- .rodata.GetCSQ.str1.1
-                0x7e907e67       0x2d build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-
-.rodata.MqttReceive.str1.1
-                0x7e907e94       0x46
- .rodata.MqttReceive.str1.1
-                0x7e907e94       0x46 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-
-.rodata.Publish_array.str1.1
-                0x7e907eda        0xc
- .rodata.Publish_array.str1.1
-                0x7e907eda        0xc build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-
-.rodata.di_config.str1.1
-                0x7e907ee6       0xdc
- .rodata.di_config.str1.1
-                0x7e907ee6       0xdc build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                                 0xdf (size before relaxing)
-
-.rodata.otaUpdate.str1.1
-                0x7e907fc2       0xb0
- .rodata.otaUpdate.str1.1
-                0x7e907fc2       0xb0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-
-.rodata.uart_read.str1.1
-                0x7e908072      0x2ed
- .rodata.uart_read.str1.1
-                0x7e908072      0x2ed build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                                0x2f0 (size before relaxing)
-
-.rodata.uart_send.str1.1
-                0x7e90835f       0x86
- .rodata.uart_send.str1.1
-                0x7e90835f       0x86 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-
-.rodata._setlocale_r.str1.4
-                0x7e9083e8       0x10
- .rodata._setlocale_r.str1.4
-                0x7e9083e8       0x10 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
-                                  0xd (size before relaxing)
-
-.rodata.str1.4  0x7e9083f8        0x4
- .rodata.str1.4
-                0x7e9083f8        0x4 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
-                                  0x2 (size before relaxing)
-
-.rodata._svfprintf_r.str1.4
-                0x7e9083fc       0x44
- .rodata._svfprintf_r.str1.4
-                0x7e9083fc       0x44 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
-                                 0x42 (size before relaxing)
-
-.rodata.blanks.7315
-                0x7e908440       0x10
- .rodata.blanks.7315
-                0x7e908440       0x10 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
-
-.rodata.zeroes.7316
-                0x7e908450       0x10
- .rodata.zeroes.7316
-                0x7e908450       0x10 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
-
-.rodata._ctype_
-                0x7e908460      0x101
- .rodata._ctype_
-                0x7e908460      0x101 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-ctype_.o)
-                0x7e908460                _ctype_
-
-.rodata._dtoa_r.str1.4
-                0x7e908564       0x14
- .rodata._dtoa_r.str1.4
-                0x7e908564       0x14 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
-                                 0x12 (size before relaxing)
-
-.rodata.__mprec_bigtens
-                0x7e908578       0x28
- .rodata.__mprec_bigtens
-                0x7e908578       0x28 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e908578                __mprec_bigtens
-
-.rodata.__mprec_tens
-                0x7e9085a0       0xc8
- .rodata.__mprec_tens
-                0x7e9085a0       0xc8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-                0x7e9085a0                __mprec_tens
-
-.rodata.p05.6092
-                0x7e908668        0xc
- .rodata.p05.6092
-                0x7e908668        0xc D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
-
-.data           0x7e908674        0x0
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+.data           0x7e90862c        0x0
                 [!provide]                PROVIDE (__data_load = LOADADDR (.data))
                 [!provide]                PROVIDE (__data_start = .)
  *(.data)
                 [!provide]                PROVIDE (_edata = .)
 
-<<<<<<< HEAD
-.igot.plt       0x7e9086b4        0x0
- .igot.plt      0x7e9086b4        0x0 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
+.igot.plt       0x7e90862c        0x0
+ .igot.plt      0x7e90862c        0x0 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
 
 .data.gUrcProcessTaskStack
-                0x7e9086b4      0xc00
+                0x7e90862c      0xc00
  .data.gUrcProcessTaskStack
-                0x7e9086b4      0xc00 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
+                0x7e90862c      0xc00 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
 
-.data.request   0x7e9092b4       0x15
- .data.request  0x7e9092b4       0x15 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e9092b4                request
+.data.request   0x7e90922c       0x15
+ .data.request  0x7e90922c       0x15 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e90922c                request
 
-.data.version   0x7e9092ca        0x2
- .data.version  0x7e9092ca        0x2 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e9092ca                version
+.data.version   0x7e909242        0x2
+ .data.version  0x7e909242        0x2 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e909242                version
 
 .data._impure_ptr
-                0x7e9092cc        0x4
+                0x7e909244        0x4
  .data._impure_ptr
-                0x7e9092cc        0x4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-impure.o)
-                0x7e9092cc                _impure_ptr
+                0x7e909244        0x4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-impure.o)
+                0x7e909244                _impure_ptr
 
 .data.impure_data
-                0x7e9092d0      0x428
+                0x7e909248      0x428
  .data.impure_data
-                0x7e9092d0      0x428 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-impure.o)
+                0x7e909248      0x428 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-impure.o)
 
 .data.__global_locale
-                0x7e9096f8      0x16c
+                0x7e909670      0x16c
  .data.__global_locale
-                0x7e9096f8      0x16c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
-                0x7e9096f8                __global_locale
+                0x7e909670      0x16c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
+                0x7e909670                __global_locale
 
-.ARM.exidx      0x7e909864        0x8
+.ARM.exidx      0x7e9097dc        0x8
                 [!provide]                PROVIDE (__exidx_start = .)
  *(.ARM.exidx)
- .ARM.exidx     0x7e909864        0x8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x7e9097dc        0x8 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivmoddi4.o)
                 [!provide]                PROVIDE (__exidx_end = .)
 
-.rel.dyn        0x7e90986c        0x0
- .rel.iplt      0x7e90986c        0x0 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
+.rel.dyn        0x7e9097e4        0x0
+ .rel.iplt      0x7e9097e4        0x0 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
 
-.bss            0x7e90986c      0x9ac
+.bss            0x7e9097e4      0x9ac
                 [!provide]                PROVIDE (__bss_start__ = .)
  *(.bss)
                 [!provide]                PROVIDE (__bss_end__ = .)
- COMMON         0x7e90986c      0x348 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
-                0x7e90986c                input_data_len
-                0x7e909870                g_sms_demo_urc_rsp_msgQ
-                0x7e909874                input_data
-                0x7e909bac                g_sms_demo_msgQ
-                0x7e909bb0                g_sms_demo_urc_process_msgQ
- COMMON         0x7e909bb4        0xc build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
-                0x7e909bb4                simcomUI_msgq
-                0x7e909bb8                urc_mqtt_msgq_1
-                0x7e909bbc                simcomUIProcesser
- COMMON         0x7e909bc0        0x4 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-                0x7e909bc0                helloWorldProcesser
- COMMON         0x7e909bc4       0x14 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e909bc4                BMS_tick
-                0x7e909bc8                imei_value
- COMMON         0x7e909bd8      0x640 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e909bd8                sAPI_AudioSetVolume
-                0x7e909bdc                sAPI_AppPackageRead
-                0x7e909be0                sAPI_UartRefRegister
-                0x7e909be4                sAPI_SysGetIccid
-                0x7e909be8                sAPI_ExtNorFlashBlock64kErase
-                0x7e909bec                sAPI_opendir
-                0x7e909bf0                sAPI_Sprintf
-                0x7e909bf4                sAPI_disableDUMP
-                0x7e909bf8                sAPI_HtpSrvConfig
-                0x7e909bfc                sAPI_FotaImageVerify
-                0x7e909c00                sAPI_AudioStatus
-                0x7e909c04                sAPI_SysGetImsi
-                0x7e909c08                sAPI_NetworkGetCgpaddr
-                0x7e909c0c                sAPI_PocStopSound
-                0x7e909c10                sAPI_NetworkGetCgreg
-                0x7e909c14                sAPI_NtpUpdate
-                0x7e909c18                sAPI_NetworkGetCpsi
-                0x7e909c1c                sAPI_I2CReadEx
-                0x7e909c20                sAPI_SemaphoreAcquire
-                0x7e909c24                sAPI_SmsSendStrogeMsg
-                0x7e909c28                sAPI_TcpipGetaddrinfo
-                0x7e909c2c                sAPI_CamIspsizeSet
-                0x7e909c30                sAPI_access
-                0x7e909c34                sAPI_TimerDelete
-                0x7e909c38                sAPI_Printf
-                0x7e909c3c                sAPI_LcdClearScreen
-                0x7e909c40                sAPI_TTSSetStatusCallBack
-                0x7e909c44                sAPI_AudioMp3StreamStop
-                0x7e909c48                sAPI_GpioGetDirection
-                0x7e909c4c                sAPI_SmsSendStorageMsg
-                0x7e909c50                sAPI_NetworkSetCfun
-                0x7e909c54                sAPI_TcpipSend
-                0x7e909c58                sAPI_remove
-                0x7e909c5c                sAPI_HttpTerm
-                0x7e909c60                sAPI_TcpipConnect
-                0x7e909c64                sAPI_MqttConnect
-                0x7e909c68                sAPI_ContextUnlock
-                0x7e909c6c                sAPI_GetPowerDownEvent
-                0x7e909c70                sAPI_MqttUNSubTopic
-                0x7e909c74                sAPI_TTSPlay
-                0x7e909c78                sAPI_PocStartRecord
-                0x7e909c7c                sAPI_TcpipFreeaddrinfo
-                0x7e909c80                sAPI_TTSStop
-                0x7e909c84                sAPI_AppPackageWrite
-                0x7e909c88                sAPI_TaskGetCurrentRef
-                0x7e909c8c                sAPI_TcpipPdpDeactive
-                0x7e909c90                sAPI_MqttAccq
-                0x7e909c94                sAPI_SysPowerOff
-                0x7e909c98                sAPI_AudioGetPlayPath
-                0x7e909c9c                sAPI_RtcEnableAlarm
-                0x7e909ca0                sAPI_CamMclkOnOff
-                0x7e909ca4                sAPI_AudioSetPlayPath
-                0x7e909ca8                sAPI_closedir
-                0x7e909cac                sAPI_SpiReadBytesEx
-                0x7e909cb0                sAPI_UsbVcomRegisterCallbackEX
-                0x7e909cb4                sAPI_AesDecrypt
-                0x7e909cb8                sAPI_AudioMp3StreamPlay
-                0x7e909cbc                sAPI_TcpipHtonl
-                0x7e909cc0                sAPI_StartShowLCD
-                0x7e909cc4                sAPI_AtSend
-                0x7e909cc8                sAPI_TimerStop
-                0x7e909ccc                sAPI_EnableInterrupts
-                0x7e909cd0                sAPI_NetworkSetCgact
-                0x7e909cd4                sAPI_ExtNorFlashReadID
-                0x7e909cd8                sAPI_AppPackageOpen
-                0x7e909cdc                sAPI_TcpipClose
-                0x7e909ce0                sAPI_GnssPowerStatusGet
-                0x7e909ce4                sAPI_NetStatusService
-                0x7e909ce8                sAPI_frewind
-                0x7e909cec                sAPI_MutexLock
-                0x7e909cf0                sAPI_SmsSendLongMsg
-                0x7e909cf4                sAPI_LcdOpen
-                0x7e909cf8                sAPI_fsize
-                0x7e909cfc                sAPI_TcpipGetsockopt
-                0x7e909d00                sAPI_TaskResume
-                0x7e909d04                sAPI_WifiScanStop
-                0x7e909d08                sAPI_GpioGetValue
-                0x7e909d0c                sAPI_SysGetimsi
-                0x7e909d10                sAPI_AudioWavFilePlay
-                0x7e909d14                sAPI_AudioPlaySampleRate
-                0x7e909d18                sAPI_FtpsDeleteDirectory
-                0x7e909d1c                sAPI_FtpsDeInit
-                0x7e909d20                sAPI_MutexDelete
-                0x7e909d24                sAPI_TaskTerminate
-                0x7e909d28                sAPI_AudioPlayMp3Cont
-                0x7e909d2c                sAPI_fseek
-                0x7e909d30                sAPI_MqttSslCfg
-                0x7e909d34                sAPI_NetworkGetCnetci
-                0x7e909d38                sAPI_SysGetBuildTime
-                0x7e909d3c                sAPI_AudRec
-                0x7e909d40                sAPI_CamOpen
-                0x7e909d44                sAPI_ContextLock
-                0x7e909d48                sAPI_LcdWriteU16Data
-                0x7e909d4c                sAPI_Base64Encode
-                0x7e909d50                sAPI_sscanf
-                0x7e909d54                sAPI_setPinFunction
-                0x7e909d58                sAPI_fwrite
-                0x7e909d5c                sAPI_TcpipAccept
-                0x7e909d60                sAPI_MqttWillTopic
-                0x7e909d64                sAPI_SemaphoreDelete
-                0x7e909d68                sAPI_FtpsGetFileSize
-                0x7e909d6c                sAPI_ReadFlashAppPartition
-                0x7e909d70                sAPI_GetUsedSize
-                0x7e909d74                sAPI_SetPowerKeyOffFunc
-                0x7e909d78                sAPI_TcpipGetaddrinfoWithPcid
-                0x7e909d7c                sAPI_TcpipSocketWithCallback
-                0x7e909d80                sAPI_HttpInit
-                0x7e909d84                sAPI_TcpipHtons
-                0x7e909d88                sAPI_EnableDump
-                0x7e909d8c                sAPI_SysGetVersion
-                0x7e909d90                sAPI_AudioGetMicGain
-                0x7e909d94                sAPI_PowerKeyRegisterCallback
-                0x7e909d98                sAPI_ReadAdc
-                0x7e909d9c                sAPI_NetworkGetCreg
-                0x7e909da0                sAPI_Calloc
-                0x7e909da4                sAPI_ExtNorFlashShowSupportList
-                0x7e909da8                sAPI_SPIReadBytes
-                0x7e909dac                sAPI_GetSysLocalTime
-                0x7e909db0                sAPI_stat
-                0x7e909db4                sAPI_FtpsDownloadFile
-                0x7e909db8                sAPI_CamPinConfigUninstall
-                0x7e909dbc                sAPI_Base64Decode
-                0x7e909dc0                sAPI_Gettimeofday
-                0x7e909dc4                sAPI_AppPackageCrc
-                0x7e909dc8                sAPI_seekdir
-                0x7e909dcc                sAPI_NetworkGetCgatt
-                0x7e909dd0                sAPI_SpiConfigInitEx
-                0x7e909dd4                sAPI_UartRs485DePinAssign
-                0x7e909dd8                sAPI_SmsSetNewMsgInd
-                0x7e909ddc                sAPI_AudioSetMicGain
-                0x7e909de0                sAPI_Debug
-                0x7e909de4                sAPI_SPIWriteBytes
-                0x7e909de8                sAPI_FlagDelete
-                0x7e909dec                sAPI_SimcardPinSet
-                0x7e909df0                sAPI_TTSSetParameters
-                0x7e909df4                sAPI_NetworkSetCtzu
-                0x7e909df8                sAPI_AmrStopStreamRecord
-                0x7e909dfc                sAPI_TcpipPdpActive
-                0x7e909e00                sAPI_SimcardSwitchMsg
-                0x7e909e04                sAPI_ExtSpiReadBytes
-                0x7e909e08                sAPI_ReadVbat
-                0x7e909e0c                sAPI_HttpRead
-                0x7e909e10                sAPI_ExtNorFlashInit
-                0x7e909e14                sAPI_TcpipSendto
-                0x7e909e18                sAPI_SystemAlarmClock2Wakeup
-                0x7e909e1c                sAPI_TcpipPdpDeactiveNotify
-                0x7e909e20                sAPI_SystemSleepExSet
-                0x7e909e24                sAPI_FtpsList
-                0x7e909e28                sAPI_MqttDisConnect
-                0x7e909e2c                sAPI_PocPlaySound
-                0x7e909e30                sAPI_FtpsGetCurrentDirectory
-                0x7e909e34                sAPI_GettimeofdaySyncRtc
-                0x7e909e38                sAPI_NetworkGetcnetci
-                0x7e909e3c                sAPI_RtcRegisterCB
-                0x7e909e40                sAPI_RtcSetAlarm
-                0x7e909e44                sAPI_MqttUnsub
-                0x7e909e48                sAPI_WifiScanStart
-                0x7e909e4c                sAPI_Vsnprintf
-                0x7e909e50                sAPI_FtpsChangeDirectory
-                0x7e909e54                sAPI_ftruncate
-                0x7e909e58                sAPI_SslClose
-                0x7e909e5c                sAPI_TcpipSocket_with_callback
-                0x7e909e60                sAPI_LcdSetBLPWM
-                0x7e909e64                sAPI_TcpipListen
-                0x7e909e68                sAPI_MsgQDelete
-                0x7e909e6c                sAPI_TimerGetStatus
-                0x7e909e70                sAPI_ExtNorFlashSectorErase
-                0x7e909e74                sAPI_SslGetContextIdMsg
-                0x7e909e78                sAPI_fclose
-                0x7e909e7c                sAPI_RegisterXipTaskCb
-                0x7e909e80                sAPI_CallDialMsg
-                0x7e909e84                sAPI_TcpipRecv
-                0x7e909e88                sAPI_AudioPlay
-                0x7e909e8c                sAPI_PocGetPcmAvail
-                0x7e909e90                sAPI_HttpPostfile
-                0x7e909e94                sAPI_telldir
-                0x7e909e98                sAPI_MqttStart
-                0x7e909e9c                sAPI_GetCpuUid
-                0x7e909ea0                sAPI_TaskDelete
-                0x7e909ea4                sAPI_Realloc
-                0x7e909ea8                OsaMemAlloc
-                0x7e909eac                sAPI_CallAutoAnswer
-                0x7e909eb0                sAPI_GetPowerKeyStatus
-                0x7e909eb4                sAPI_TcpipInetAddr
-                0x7e909eb8                sAPI_LcdWriteCmd
-                0x7e909ebc                sAPI_I2CWrite
-                0x7e909ec0                sAPI_SemaphorePoll
-                0x7e909ec4                sAPI_SslRead
-                0x7e909ec8                sAPI_CacheCleanMemory
-                0x7e909ecc                sAPI_UartRegisterCallback
-                0x7e909ed0                sAPI_PWMConfigEx
-                0x7e909ed4                sAPI_CamParaSet
-                0x7e909ed8                sAPI_NetworkGetCgdcont
-                0x7e909edc                sAPI_MqttWillMsg
-                0x7e909ee0                sAPI_MqttTopic
-                0x7e909ee4                sAPI_TimerCreate
-                0x7e909ee8                sAPI_TcpipGethostbyname
-                0x7e909eec                sAPI_ExtNorFlashCs
-                0x7e909ef0                sAPI_CamGetGlobalConfig
-                0x7e909ef4                sAPI_PocPcmRead
-                0x7e909ef8                sAPI_NetworkSetCops
-                0x7e909efc                sAPI_FtpsDeleteFile
-                0x7e909f00                sAPI_I2CRead
-                0x7e909f04                sAPI_rename
-                0x7e909f08                sAPI_ExtNorFlashRead
-                0x7e909f0c                sAPI_NetworkGetCops
-                0x7e909f10                sAPI_CamLdoOnOff
-                0x7e909f14                sAPI_FtpsLogin
-                0x7e909f18                sAPI_GnssPowerStatusSet
-                0x7e909f1c                sAPI_UartSetConfig
-                0x7e909f20                sAPI_TcpipGetSocketErrno
-                0x7e909f24                sAPI_CallEndMsg
-                0x7e909f28                sAPI_AppPartitionBinSize
-                0x7e909f2c                sAPI_UartControl
-                0x7e909f30                sAPI_LcdWriteData
-                0x7e909f34                sAPI_LcdWrite
-                0x7e909f38                sAPI_NetworkGetCGAUTH
-                0x7e909f3c                sAPI_LcdBacklightAndIOVccCtrlPin
-                0x7e909f40                sAPI_NetworkSetCnmp
-                0x7e909f44                sAPI_SmsSendMsg
-                0x7e909f48                sAPI_Ping
-                0x7e909f4c                sAPI_MqttPayload
-                0x7e909f50                sAPI_TcpipInetNtoa
-                0x7e909f54                sAPI_DisableInterrupts
-                0x7e909f58                sAPI_SetRealTimeClock
-                0x7e909f5c                sAPI_FlagSet
-                0x7e909f60                sAPI_WriteFlash
-                0x7e909f64                sAPI_SimcardHotSwapMsg
-                0x7e909f68                sAPI_FtpsLogout
-                0x7e909f6c                sAPI_Time
-                0x7e909f70                sAPI_TaskSuspend
-                0x7e909f74                sAPI_SslSetContextIdMsg
-                0x7e909f78                sAPI_TcpipSelect
-                0x7e909f7c                sAPI_GpioConfig
-                0x7e909f80                sAPI_SimPinGet
-                0x7e909f84                sAPI_UsbVcomWrite
-                0x7e909f88                sAPI_TcpipInetNtop
-                0x7e909f8c                sAPI_TaskSleep
-                0x7e909f90                sAPI_CamOpenEx
-                0x7e909f94                sAPI_UartPrintf
-                0x7e909f98                sAPI_HttpData
-                0x7e909f9c                sAPI_UartRead
-                0x7e909fa0                sAPI_EraseFlashSector
-                0x7e909fa4                sAPI_FtpsInit
-                0x7e909fa8                sAPI_HttpHead
-                0x7e909fac                sAPI_SysReset
-                0x7e909fb0                sAPI_AudioSetAmrRateLevel
-                0x7e909fb4                sAPI_TcpipInet_ntoa
-                0x7e909fb8                sAPI_PocInitLib
-                0x7e909fbc                sAPI_AudioRecord
-                0x7e909fc0                sAPI_UsbVbusDetect
-                0x7e909fc4                sAPI_I2CWriteEx
-                0x7e909fc8                sAPI_TcpipInet_pton
-                0x7e909fcc                sAPI_ForceDownload
-                0x7e909fd0                sAPI_WifiSetHandler
-                0x7e909fd4                sAPI_SmsWriteMsg
-                0x7e909fd8                sAPI_SysGetRFVersion
-                0x7e909fdc                sAPI_setGpioDirection
-                0x7e909fe0                sAPI_TcpipBind
-                0x7e909fe4                sAPI_GetRealTimeClock
-                0x7e909fe8                sAPI_NetworkGetCsq
-                0x7e909fec                sAPI_HttpPara
-                0x7e909ff0                sAPI_MsgQRecv
-                0x7e909ff4                sAPI_MsgQCreate
-                0x7e909ff8                sAPI_UartWriteString
-                0x7e909ffc                sAPI_AesEncrypt
-                0x7e90a000                sAPI_enableDUMP
-                0x7e90a004                sAPI_ReadFlash
-                0x7e90a008                sAPI_UsbVcomRegisterCallback
-                0x7e90a00c                sAPI_UartGetConfig
-                0x7e90a010                sAPI_MqttStop
-                0x7e90a014                sAPI_AudioAmrStreamPlay
-                0x7e90a018                sAPI_ExtNorFlashWrite
-                0x7e90a01c                sAPI_FtpsDownloadFileToBuffer
-                0x7e90a020                sAPI_TcpipGetpeername
-                0x7e90a024                sAPI_TcpipNtohs
-                0x7e90a028                sAPI_SysGetHplmn
-                0x7e90a02c                sAPI_AudioGetVolume
-                0x7e90a030                sAPI_DisableDump
-                0x7e90a034                sAPI_GpioSetDirection
-                0x7e90a038                sAPI_AppDownload
-                0x7e90a03c                sAPI_GpioWakeupEnable
-                0x7e90a040                sAPI_SystemSleepGet
-                0x7e90a044                sAPI_CallStateMsg
-                0x7e90a048                sAPI_SimPinSet
-                0x7e90a04c                sAPI_SemaphoreCreate
-                0x7e90a050                sAPI_YUVtoRGBZoomOut
-                0x7e90a054                sAPI_fopen
-                0x7e90a058                sAPI_MutexCreate
-                0x7e90a05c                sAPI_TimerStart
-                0x7e90a060                sAPI_MsgQSend
-                0x7e90a064                sAPI_MqttRel
-                0x7e90a068                sAPI_UartRs485DePinAssignEx
-                0x7e90a06c                sAPI_NetworkGetCgauth
-                0x7e90a070                sAPI_GetSize
-                0x7e90a074                sAPI_NetworkSetCgdcont
-                0x7e90a078                sAPI_TcpipGetErrno
-                0x7e90a07c                sAPI_TcpipGetaddrinfo_with_pcid
-                0x7e90a080                sAPI_GetCamBuf
-                0x7e90a084                sAPI_SpiWriteBytesEx
-                0x7e90a088                sAPI_NetworkInit
-                0x7e90a08c                sAPI_Snprintf
-                0x7e90a090                sAPI_SemaphoreRelease
-                0x7e90a094                sAPI_SmsDelOneMsg
-                0x7e90a098                sAPI_TcpipSocket
-                0x7e90a09c                sAPI_TcpipInet_addr
-                0x7e90a0a0                pUserApi
-                0x7e90a0a4                sAPI_TcpipGetSocketPdpAddr
-                0x7e90a0a8                sAPI_InitNetLight
-                0x7e90a0ac                sAPI_GetFreeSize
-                0x7e90a0b0                sAPI_NetworkSetCgatt
-                0x7e90a0b4                sAPI_CallAnswerMsg
-                0x7e90a0b8                sAPI_PocStopRecord
-                0x7e90a0bc                sAPI_SmsReadMsg
-                0x7e90a0c0                sAPI_FtpsSslConfig
-                0x7e90a0c4                sAPI_I2CConfigInit
-                0x7e90a0c8                sAPI_AudioStop
-                0x7e90a0cc                sAPI_mkdir
-                0x7e90a0d0                sAPI_AudioPcmStop
-                0x7e90a0d4                sAPI_SetSysLocalTime
-                0x7e90a0d8                sAPI_GetSystemInfo
-                0x7e90a0dc                sAPI_CamWriteReg
-                0x7e90a0e0                sAPI_GetStatisticsData
-                0x7e90a0e4                sAPI_TcpipShutdown
-                0x7e90a0e8                sAPI_PocCleanBufferData
-                0x7e90a0ec                sAPI_AudioPlayAmrCont
-                0x7e90a0f0                sAPI_LocGet
-                0x7e90a0f4                sAPI_MqttConnLostCb
-                0x7e90a0f8                sAPI_UrcRefRelease
-                0x7e90a0fc                sAPI_TaskCreate
-                0x7e90a100                sAPI_FlagCreate
-                0x7e90a104                sAPI_NetworkGetCnmp
-                0x7e90a108                sAPI_ftell
-                0x7e90a10c                sAPI_FlagWait
-                0x7e90a110                sAPI_StopShowLCD
-                0x7e90a114                sAPI_UartWrite
-                0x7e90a118                sAPI_fsync
-                0x7e90a11c                sAPI_HttpAction
-                0x7e90a120                sAPI_TcpipSetsockopt
-                0x7e90a124                sAPI_AppPackageClose
-                0x7e90a128                sAPI_UartRegisterCallbackEX
-                0x7e90a12c                sAPI_MqttSubTopic
-                0x7e90a130                sAPI_RestoreInterrupts
-                0x7e90a134                sAPI_SystemSleepSet
-                0x7e90a138                sAPI_SimcardPinGet
-                0x7e90a13c                sAPI_MqttPub
-                0x7e90a140                sAPI_FtpsGetTransferType
-                0x7e90a144                sAPI_LcdSetBrightness
-                0x7e90a148                sAPI_LcdDisplayOn
-                0x7e90a14c                sAPI_DelayUs
-                0x7e90a150                sAPI_AudioPcmPlay
-                0x7e90a154                sAPI_GpioConfigInterrupt
-                0x7e90a158                sAPI_TcpipInetPton
-                0x7e90a15c                sAPI_SystemSleepExGet
-                0x7e90a160                sAPI_AmrStreamRecord
-                0x7e90a164                sAPI_CamClose
-                0x7e90a168                sAPI_MsgQSendSuspend
-                0x7e90a16c                sAPI_TcpipGetsockname
-                0x7e90a170                sAPI_HtpUpdate
-                0x7e90a174                sAPI_TcpipIoctlsocket
-                0x7e90a178                sAPI_AudioAmrStreamStop
-                0x7e90a17c                OsaMemFree
-                0x7e90a180                sAPI_SetVddAux
-                0x7e90a184                sAPI_NetworkSetCgauth
-                0x7e90a188                sAPI_UrcRefRegister
-                0x7e90a18c                sAPI_PWMConfig
-                0x7e90a190                sAPI_FotaServiceBegin
-                0x7e90a194                sAPI_readdir
-                0x7e90a198                sAPI_FtpsCreateDirectory
-                0x7e90a19c                sAPI_FtpsTransferType
-                0x7e90a1a0                sAPI_fread
-                0x7e90a1a4                sAPI_SslSend
-                0x7e90a1a8                sAPI_MutexUnLock
-                0x7e90a1ac                sAPI_SslHandShake
-                0x7e90a1b0                sAPI_RtcGetAlarm
-                0x7e90a1b4                sAPI_MqttSub
-                0x7e90a1b8                sAPI_NetworkSetCGAUTH
-                0x7e90a1bc                sAPI_FtpsUploadFile
-                0x7e90a1c0                sAPI_NetworkGetCgact
-                0x7e90a1c4                sAPI_NetworkGetCfun
-                0x7e90a1c8                sAPI_SPIConfigInit
-                0x7e90a1cc                sAPI_MsgQPoll
-                0x7e90a1d0                sAPI_GetTicks
-                0x7e90a1d4                sAPI_TcpipRecvfrom
-                0x7e90a1d8                sAPI_LcdClose
-                0x7e90a1dc                sAPI_FotaImageWrite
-                0x7e90a1e0                sAPI_PinmuxFunc
-                0x7e90a1e4                sAPI_SysGetImei
-                0x7e90a1e8                sAPI_SendATCMDWaitResp
-                0x7e90a1ec                sAPI_LcdDisplayOff
-                0x7e90a1f0                sAPI_GpioSetValue
-                0x7e90a1f4                sAPI_TcpipInet_ntop
-                0x7e90a1f8                sAPI_SysGetCusVersion
-                0x7e90a1fc                sAPI_UsbVcomRead
-                0x7e90a200                sAPI_GetPowerUpEvent
-                0x7e90a204                sAPI_SmsDelAllMsg
-                0x7e90a208                sAPI_UartRxStatus
-                0x7e90a20c                sAPI_MqttCfg
-                0x7e90a210                sAPI_CamPinConfig
-                0x7e90a214                sAPI_AudioSetPaCtrlConfig
-=======
-.igot.plt       0x7e908674        0x0
- .igot.plt      0x7e908674        0x0 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
-
-.data.gUrcProcessTaskStack
-                0x7e908674      0xc00
- .data.gUrcProcessTaskStack
-                0x7e908674      0xc00 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
-
-.data.request   0x7e909274       0x15
- .data.request  0x7e909274       0x15 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e909274                request
-
-.data._impure_ptr
-                0x7e90928c        0x4
- .data._impure_ptr
-                0x7e90928c        0x4 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-impure.o)
-                0x7e90928c                _impure_ptr
-
-.data.impure_data
-                0x7e909290      0x428
- .data.impure_data
-                0x7e909290      0x428 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-impure.o)
-
-.data.__global_locale
-                0x7e9096b8      0x16c
- .data.__global_locale
-                0x7e9096b8      0x16c D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
-                0x7e9096b8                __global_locale
-
-.ARM.exidx      0x7e909824        0x8
-                [!provide]                PROVIDE (__exidx_start = .)
- *(.ARM.exidx)
- .ARM.exidx     0x7e909824        0x8 D:\Data\DuAnPin\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivmoddi4.o)
-                [!provide]                PROVIDE (__exidx_end = .)
-
-.rel.dyn        0x7e90982c        0x0
- .rel.iplt      0x7e90982c        0x0 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
-
-.bss            0x7e90982c      0x9ac
-                [!provide]                PROVIDE (__bss_start__ = .)
- *(.bss)
-                [!provide]                PROVIDE (__bss_end__ = .)
- COMMON         0x7e90982c      0x348 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
-                0x7e90982c                input_data_len
-                0x7e909830                g_sms_demo_urc_rsp_msgQ
-                0x7e909834                input_data
-                0x7e909b6c                g_sms_demo_msgQ
-                0x7e909b70                g_sms_demo_urc_process_msgQ
- COMMON         0x7e909b74        0xc build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
-                0x7e909b74                simcomUI_msgq
-                0x7e909b78                urc_mqtt_msgq_1
-                0x7e909b7c                simcomUIProcesser
- COMMON         0x7e909b80        0x4 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-                0x7e909b80                helloWorldProcesser
- COMMON         0x7e909b84       0x14 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e909b84                BMS_tick
-                0x7e909b88                imei_value
- COMMON         0x7e909b98      0x640 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-                0x7e909b98                sAPI_AudioSetVolume
-                0x7e909b9c                sAPI_AppPackageRead
-                0x7e909ba0                sAPI_UartRefRegister
-                0x7e909ba4                sAPI_SysGetIccid
-                0x7e909ba8                sAPI_ExtNorFlashBlock64kErase
-                0x7e909bac                sAPI_opendir
-                0x7e909bb0                sAPI_Sprintf
-                0x7e909bb4                sAPI_disableDUMP
-                0x7e909bb8                sAPI_HtpSrvConfig
-                0x7e909bbc                sAPI_FotaImageVerify
-                0x7e909bc0                sAPI_AudioStatus
-                0x7e909bc4                sAPI_SysGetImsi
-                0x7e909bc8                sAPI_NetworkGetCgpaddr
-                0x7e909bcc                sAPI_PocStopSound
-                0x7e909bd0                sAPI_NetworkGetCgreg
-                0x7e909bd4                sAPI_NtpUpdate
-                0x7e909bd8                sAPI_NetworkGetCpsi
-                0x7e909bdc                sAPI_I2CReadEx
-                0x7e909be0                sAPI_SemaphoreAcquire
-                0x7e909be4                sAPI_SmsSendStrogeMsg
-                0x7e909be8                sAPI_TcpipGetaddrinfo
-                0x7e909bec                sAPI_CamIspsizeSet
-                0x7e909bf0                sAPI_access
-                0x7e909bf4                sAPI_TimerDelete
-                0x7e909bf8                sAPI_Printf
-                0x7e909bfc                sAPI_LcdClearScreen
-                0x7e909c00                sAPI_TTSSetStatusCallBack
-                0x7e909c04                sAPI_AudioMp3StreamStop
-                0x7e909c08                sAPI_GpioGetDirection
-                0x7e909c0c                sAPI_SmsSendStorageMsg
-                0x7e909c10                sAPI_NetworkSetCfun
-                0x7e909c14                sAPI_TcpipSend
-                0x7e909c18                sAPI_remove
-                0x7e909c1c                sAPI_HttpTerm
-                0x7e909c20                sAPI_TcpipConnect
-                0x7e909c24                sAPI_MqttConnect
-                0x7e909c28                sAPI_ContextUnlock
-                0x7e909c2c                sAPI_GetPowerDownEvent
-                0x7e909c30                sAPI_MqttUNSubTopic
-                0x7e909c34                sAPI_TTSPlay
-                0x7e909c38                sAPI_PocStartRecord
-                0x7e909c3c                sAPI_TcpipFreeaddrinfo
-                0x7e909c40                sAPI_TTSStop
-                0x7e909c44                sAPI_AppPackageWrite
-                0x7e909c48                sAPI_TaskGetCurrentRef
-                0x7e909c4c                sAPI_TcpipPdpDeactive
-                0x7e909c50                sAPI_MqttAccq
-                0x7e909c54                sAPI_SysPowerOff
-                0x7e909c58                sAPI_AudioGetPlayPath
-                0x7e909c5c                sAPI_RtcEnableAlarm
-                0x7e909c60                sAPI_CamMclkOnOff
-                0x7e909c64                sAPI_AudioSetPlayPath
-                0x7e909c68                sAPI_closedir
-                0x7e909c6c                sAPI_SpiReadBytesEx
-                0x7e909c70                sAPI_UsbVcomRegisterCallbackEX
-                0x7e909c74                sAPI_AesDecrypt
-                0x7e909c78                sAPI_AudioMp3StreamPlay
-                0x7e909c7c                sAPI_TcpipHtonl
-                0x7e909c80                sAPI_StartShowLCD
-                0x7e909c84                sAPI_AtSend
-                0x7e909c88                sAPI_TimerStop
-                0x7e909c8c                sAPI_EnableInterrupts
-                0x7e909c90                sAPI_NetworkSetCgact
-                0x7e909c94                sAPI_ExtNorFlashReadID
-                0x7e909c98                sAPI_AppPackageOpen
-                0x7e909c9c                sAPI_TcpipClose
-                0x7e909ca0                sAPI_GnssPowerStatusGet
-                0x7e909ca4                sAPI_NetStatusService
-                0x7e909ca8                sAPI_frewind
-                0x7e909cac                sAPI_MutexLock
-                0x7e909cb0                sAPI_SmsSendLongMsg
-                0x7e909cb4                sAPI_LcdOpen
-                0x7e909cb8                sAPI_fsize
-                0x7e909cbc                sAPI_TcpipGetsockopt
-                0x7e909cc0                sAPI_TaskResume
-                0x7e909cc4                sAPI_WifiScanStop
-                0x7e909cc8                sAPI_GpioGetValue
-                0x7e909ccc                sAPI_SysGetimsi
-                0x7e909cd0                sAPI_AudioWavFilePlay
-                0x7e909cd4                sAPI_AudioPlaySampleRate
-                0x7e909cd8                sAPI_FtpsDeleteDirectory
-                0x7e909cdc                sAPI_FtpsDeInit
-                0x7e909ce0                sAPI_MutexDelete
-                0x7e909ce4                sAPI_TaskTerminate
-                0x7e909ce8                sAPI_AudioPlayMp3Cont
-                0x7e909cec                sAPI_fseek
-                0x7e909cf0                sAPI_MqttSslCfg
-                0x7e909cf4                sAPI_NetworkGetCnetci
-                0x7e909cf8                sAPI_SysGetBuildTime
-                0x7e909cfc                sAPI_AudRec
-                0x7e909d00                sAPI_CamOpen
-                0x7e909d04                sAPI_ContextLock
-                0x7e909d08                sAPI_LcdWriteU16Data
-                0x7e909d0c                sAPI_Base64Encode
-                0x7e909d10                sAPI_sscanf
-                0x7e909d14                sAPI_setPinFunction
-                0x7e909d18                sAPI_fwrite
-                0x7e909d1c                sAPI_TcpipAccept
-                0x7e909d20                sAPI_MqttWillTopic
-                0x7e909d24                sAPI_SemaphoreDelete
-                0x7e909d28                sAPI_FtpsGetFileSize
-                0x7e909d2c                sAPI_ReadFlashAppPartition
-                0x7e909d30                sAPI_GetUsedSize
-                0x7e909d34                sAPI_SetPowerKeyOffFunc
-                0x7e909d38                sAPI_TcpipGetaddrinfoWithPcid
-                0x7e909d3c                sAPI_TcpipSocketWithCallback
-                0x7e909d40                sAPI_HttpInit
-                0x7e909d44                sAPI_TcpipHtons
-                0x7e909d48                sAPI_EnableDump
-                0x7e909d4c                sAPI_SysGetVersion
-                0x7e909d50                sAPI_AudioGetMicGain
-                0x7e909d54                sAPI_PowerKeyRegisterCallback
-                0x7e909d58                sAPI_ReadAdc
-                0x7e909d5c                sAPI_NetworkGetCreg
-                0x7e909d60                sAPI_Calloc
-                0x7e909d64                sAPI_ExtNorFlashShowSupportList
-                0x7e909d68                sAPI_SPIReadBytes
-                0x7e909d6c                sAPI_GetSysLocalTime
-                0x7e909d70                sAPI_stat
-                0x7e909d74                sAPI_FtpsDownloadFile
-                0x7e909d78                sAPI_CamPinConfigUninstall
-                0x7e909d7c                sAPI_Base64Decode
-                0x7e909d80                sAPI_Gettimeofday
-                0x7e909d84                sAPI_AppPackageCrc
-                0x7e909d88                sAPI_seekdir
-                0x7e909d8c                sAPI_NetworkGetCgatt
-                0x7e909d90                sAPI_SpiConfigInitEx
-                0x7e909d94                sAPI_UartRs485DePinAssign
-                0x7e909d98                sAPI_SmsSetNewMsgInd
-                0x7e909d9c                sAPI_AudioSetMicGain
-                0x7e909da0                sAPI_Debug
-                0x7e909da4                sAPI_SPIWriteBytes
-                0x7e909da8                sAPI_FlagDelete
-                0x7e909dac                sAPI_SimcardPinSet
-                0x7e909db0                sAPI_TTSSetParameters
-                0x7e909db4                sAPI_NetworkSetCtzu
-                0x7e909db8                sAPI_AmrStopStreamRecord
-                0x7e909dbc                sAPI_TcpipPdpActive
-                0x7e909dc0                sAPI_SimcardSwitchMsg
-                0x7e909dc4                sAPI_ExtSpiReadBytes
-                0x7e909dc8                sAPI_ReadVbat
-                0x7e909dcc                sAPI_HttpRead
-                0x7e909dd0                sAPI_ExtNorFlashInit
-                0x7e909dd4                sAPI_TcpipSendto
-                0x7e909dd8                sAPI_SystemAlarmClock2Wakeup
-                0x7e909ddc                sAPI_TcpipPdpDeactiveNotify
-                0x7e909de0                sAPI_SystemSleepExSet
-                0x7e909de4                sAPI_FtpsList
-                0x7e909de8                sAPI_MqttDisConnect
-                0x7e909dec                sAPI_PocPlaySound
-                0x7e909df0                sAPI_FtpsGetCurrentDirectory
-                0x7e909df4                sAPI_GettimeofdaySyncRtc
-                0x7e909df8                sAPI_NetworkGetcnetci
-                0x7e909dfc                sAPI_RtcRegisterCB
-                0x7e909e00                sAPI_RtcSetAlarm
-                0x7e909e04                sAPI_MqttUnsub
-                0x7e909e08                sAPI_WifiScanStart
-                0x7e909e0c                sAPI_Vsnprintf
-                0x7e909e10                sAPI_FtpsChangeDirectory
-                0x7e909e14                sAPI_ftruncate
-                0x7e909e18                sAPI_SslClose
-                0x7e909e1c                sAPI_TcpipSocket_with_callback
-                0x7e909e20                sAPI_LcdSetBLPWM
-                0x7e909e24                sAPI_TcpipListen
-                0x7e909e28                sAPI_MsgQDelete
-                0x7e909e2c                sAPI_TimerGetStatus
-                0x7e909e30                sAPI_ExtNorFlashSectorErase
-                0x7e909e34                sAPI_SslGetContextIdMsg
-                0x7e909e38                sAPI_fclose
-                0x7e909e3c                sAPI_RegisterXipTaskCb
-                0x7e909e40                sAPI_CallDialMsg
-                0x7e909e44                sAPI_TcpipRecv
-                0x7e909e48                sAPI_AudioPlay
-                0x7e909e4c                sAPI_PocGetPcmAvail
-                0x7e909e50                sAPI_HttpPostfile
-                0x7e909e54                sAPI_telldir
-                0x7e909e58                sAPI_MqttStart
-                0x7e909e5c                sAPI_GetCpuUid
-                0x7e909e60                sAPI_TaskDelete
-                0x7e909e64                sAPI_Realloc
-                0x7e909e68                OsaMemAlloc
-                0x7e909e6c                sAPI_CallAutoAnswer
-                0x7e909e70                sAPI_GetPowerKeyStatus
-                0x7e909e74                sAPI_TcpipInetAddr
-                0x7e909e78                sAPI_LcdWriteCmd
-                0x7e909e7c                sAPI_I2CWrite
-                0x7e909e80                sAPI_SemaphorePoll
-                0x7e909e84                sAPI_SslRead
-                0x7e909e88                sAPI_CacheCleanMemory
-                0x7e909e8c                sAPI_UartRegisterCallback
-                0x7e909e90                sAPI_PWMConfigEx
-                0x7e909e94                sAPI_CamParaSet
-                0x7e909e98                sAPI_NetworkGetCgdcont
-                0x7e909e9c                sAPI_MqttWillMsg
-                0x7e909ea0                sAPI_MqttTopic
-                0x7e909ea4                sAPI_TimerCreate
-                0x7e909ea8                sAPI_TcpipGethostbyname
-                0x7e909eac                sAPI_ExtNorFlashCs
-                0x7e909eb0                sAPI_CamGetGlobalConfig
-                0x7e909eb4                sAPI_PocPcmRead
-                0x7e909eb8                sAPI_NetworkSetCops
-                0x7e909ebc                sAPI_FtpsDeleteFile
-                0x7e909ec0                sAPI_I2CRead
-                0x7e909ec4                sAPI_rename
-                0x7e909ec8                sAPI_ExtNorFlashRead
-                0x7e909ecc                sAPI_NetworkGetCops
-                0x7e909ed0                sAPI_CamLdoOnOff
-                0x7e909ed4                sAPI_FtpsLogin
-                0x7e909ed8                sAPI_GnssPowerStatusSet
-                0x7e909edc                sAPI_UartSetConfig
-                0x7e909ee0                sAPI_TcpipGetSocketErrno
-                0x7e909ee4                sAPI_CallEndMsg
-                0x7e909ee8                sAPI_AppPartitionBinSize
-                0x7e909eec                sAPI_UartControl
-                0x7e909ef0                sAPI_LcdWriteData
-                0x7e909ef4                sAPI_LcdWrite
-                0x7e909ef8                sAPI_NetworkGetCGAUTH
-                0x7e909efc                sAPI_LcdBacklightAndIOVccCtrlPin
-                0x7e909f00                sAPI_NetworkSetCnmp
-                0x7e909f04                sAPI_SmsSendMsg
-                0x7e909f08                sAPI_Ping
-                0x7e909f0c                sAPI_MqttPayload
-                0x7e909f10                sAPI_TcpipInetNtoa
-                0x7e909f14                sAPI_DisableInterrupts
-                0x7e909f18                sAPI_SetRealTimeClock
-                0x7e909f1c                sAPI_FlagSet
-                0x7e909f20                sAPI_WriteFlash
-                0x7e909f24                sAPI_SimcardHotSwapMsg
-                0x7e909f28                sAPI_FtpsLogout
-                0x7e909f2c                sAPI_Time
-                0x7e909f30                sAPI_TaskSuspend
-                0x7e909f34                sAPI_SslSetContextIdMsg
-                0x7e909f38                sAPI_TcpipSelect
-                0x7e909f3c                sAPI_GpioConfig
-                0x7e909f40                sAPI_SimPinGet
-                0x7e909f44                sAPI_UsbVcomWrite
-                0x7e909f48                sAPI_TcpipInetNtop
-                0x7e909f4c                sAPI_TaskSleep
-                0x7e909f50                sAPI_CamOpenEx
-                0x7e909f54                sAPI_UartPrintf
-                0x7e909f58                sAPI_HttpData
-                0x7e909f5c                sAPI_UartRead
-                0x7e909f60                sAPI_EraseFlashSector
-                0x7e909f64                sAPI_FtpsInit
-                0x7e909f68                sAPI_HttpHead
-                0x7e909f6c                sAPI_SysReset
-                0x7e909f70                sAPI_AudioSetAmrRateLevel
-                0x7e909f74                sAPI_TcpipInet_ntoa
-                0x7e909f78                sAPI_PocInitLib
-                0x7e909f7c                sAPI_AudioRecord
-                0x7e909f80                sAPI_UsbVbusDetect
-                0x7e909f84                sAPI_I2CWriteEx
-                0x7e909f88                sAPI_TcpipInet_pton
-                0x7e909f8c                sAPI_ForceDownload
-                0x7e909f90                sAPI_WifiSetHandler
-                0x7e909f94                sAPI_SmsWriteMsg
-                0x7e909f98                sAPI_SysGetRFVersion
-                0x7e909f9c                sAPI_setGpioDirection
-                0x7e909fa0                sAPI_TcpipBind
-                0x7e909fa4                sAPI_GetRealTimeClock
-                0x7e909fa8                sAPI_NetworkGetCsq
-                0x7e909fac                sAPI_HttpPara
-                0x7e909fb0                sAPI_MsgQRecv
-                0x7e909fb4                sAPI_MsgQCreate
-                0x7e909fb8                sAPI_UartWriteString
-                0x7e909fbc                sAPI_AesEncrypt
-                0x7e909fc0                sAPI_enableDUMP
-                0x7e909fc4                sAPI_ReadFlash
-                0x7e909fc8                sAPI_UsbVcomRegisterCallback
-                0x7e909fcc                sAPI_UartGetConfig
-                0x7e909fd0                sAPI_MqttStop
-                0x7e909fd4                sAPI_AudioAmrStreamPlay
-                0x7e909fd8                sAPI_ExtNorFlashWrite
-                0x7e909fdc                sAPI_FtpsDownloadFileToBuffer
-                0x7e909fe0                sAPI_TcpipGetpeername
-                0x7e909fe4                sAPI_TcpipNtohs
-                0x7e909fe8                sAPI_SysGetHplmn
-                0x7e909fec                sAPI_AudioGetVolume
-                0x7e909ff0                sAPI_DisableDump
-                0x7e909ff4                sAPI_GpioSetDirection
-                0x7e909ff8                sAPI_AppDownload
-                0x7e909ffc                sAPI_GpioWakeupEnable
-                0x7e90a000                sAPI_SystemSleepGet
-                0x7e90a004                sAPI_CallStateMsg
-                0x7e90a008                sAPI_SimPinSet
-                0x7e90a00c                sAPI_SemaphoreCreate
-                0x7e90a010                sAPI_YUVtoRGBZoomOut
-                0x7e90a014                sAPI_fopen
-                0x7e90a018                sAPI_MutexCreate
-                0x7e90a01c                sAPI_TimerStart
-                0x7e90a020                sAPI_MsgQSend
-                0x7e90a024                sAPI_MqttRel
-                0x7e90a028                sAPI_UartRs485DePinAssignEx
-                0x7e90a02c                sAPI_NetworkGetCgauth
-                0x7e90a030                sAPI_GetSize
-                0x7e90a034                sAPI_NetworkSetCgdcont
-                0x7e90a038                sAPI_TcpipGetErrno
-                0x7e90a03c                sAPI_TcpipGetaddrinfo_with_pcid
-                0x7e90a040                sAPI_GetCamBuf
-                0x7e90a044                sAPI_SpiWriteBytesEx
-                0x7e90a048                sAPI_NetworkInit
-                0x7e90a04c                sAPI_Snprintf
-                0x7e90a050                sAPI_SemaphoreRelease
-                0x7e90a054                sAPI_SmsDelOneMsg
-                0x7e90a058                sAPI_TcpipSocket
-                0x7e90a05c                sAPI_TcpipInet_addr
-                0x7e90a060                pUserApi
-                0x7e90a064                sAPI_TcpipGetSocketPdpAddr
-                0x7e90a068                sAPI_InitNetLight
-                0x7e90a06c                sAPI_GetFreeSize
-                0x7e90a070                sAPI_NetworkSetCgatt
-                0x7e90a074                sAPI_CallAnswerMsg
-                0x7e90a078                sAPI_PocStopRecord
-                0x7e90a07c                sAPI_SmsReadMsg
-                0x7e90a080                sAPI_FtpsSslConfig
-                0x7e90a084                sAPI_I2CConfigInit
-                0x7e90a088                sAPI_AudioStop
-                0x7e90a08c                sAPI_mkdir
-                0x7e90a090                sAPI_AudioPcmStop
-                0x7e90a094                sAPI_SetSysLocalTime
-                0x7e90a098                sAPI_GetSystemInfo
-                0x7e90a09c                sAPI_CamWriteReg
-                0x7e90a0a0                sAPI_GetStatisticsData
-                0x7e90a0a4                sAPI_TcpipShutdown
-                0x7e90a0a8                sAPI_PocCleanBufferData
-                0x7e90a0ac                sAPI_AudioPlayAmrCont
-                0x7e90a0b0                sAPI_LocGet
-                0x7e90a0b4                sAPI_MqttConnLostCb
-                0x7e90a0b8                sAPI_UrcRefRelease
-                0x7e90a0bc                sAPI_TaskCreate
-                0x7e90a0c0                sAPI_FlagCreate
-                0x7e90a0c4                sAPI_NetworkGetCnmp
-                0x7e90a0c8                sAPI_ftell
-                0x7e90a0cc                sAPI_FlagWait
-                0x7e90a0d0                sAPI_StopShowLCD
-                0x7e90a0d4                sAPI_UartWrite
-                0x7e90a0d8                sAPI_fsync
-                0x7e90a0dc                sAPI_HttpAction
-                0x7e90a0e0                sAPI_TcpipSetsockopt
-                0x7e90a0e4                sAPI_AppPackageClose
-                0x7e90a0e8                sAPI_UartRegisterCallbackEX
-                0x7e90a0ec                sAPI_MqttSubTopic
-                0x7e90a0f0                sAPI_RestoreInterrupts
-                0x7e90a0f4                sAPI_SystemSleepSet
-                0x7e90a0f8                sAPI_SimcardPinGet
-                0x7e90a0fc                sAPI_MqttPub
-                0x7e90a100                sAPI_FtpsGetTransferType
-                0x7e90a104                sAPI_LcdSetBrightness
-                0x7e90a108                sAPI_LcdDisplayOn
-                0x7e90a10c                sAPI_DelayUs
-                0x7e90a110                sAPI_AudioPcmPlay
-                0x7e90a114                sAPI_GpioConfigInterrupt
-                0x7e90a118                sAPI_TcpipInetPton
-                0x7e90a11c                sAPI_SystemSleepExGet
-                0x7e90a120                sAPI_AmrStreamRecord
-                0x7e90a124                sAPI_CamClose
-                0x7e90a128                sAPI_MsgQSendSuspend
-                0x7e90a12c                sAPI_TcpipGetsockname
-                0x7e90a130                sAPI_HtpUpdate
-                0x7e90a134                sAPI_TcpipIoctlsocket
-                0x7e90a138                sAPI_AudioAmrStreamStop
-                0x7e90a13c                OsaMemFree
-                0x7e90a140                sAPI_SetVddAux
-                0x7e90a144                sAPI_NetworkSetCgauth
-                0x7e90a148                sAPI_UrcRefRegister
-                0x7e90a14c                sAPI_PWMConfig
-                0x7e90a150                sAPI_FotaServiceBegin
-                0x7e90a154                sAPI_readdir
-                0x7e90a158                sAPI_FtpsCreateDirectory
-                0x7e90a15c                sAPI_FtpsTransferType
-                0x7e90a160                sAPI_fread
-                0x7e90a164                sAPI_SslSend
-                0x7e90a168                sAPI_MutexUnLock
-                0x7e90a16c                sAPI_SslHandShake
-                0x7e90a170                sAPI_RtcGetAlarm
-                0x7e90a174                sAPI_MqttSub
-                0x7e90a178                sAPI_NetworkSetCGAUTH
-                0x7e90a17c                sAPI_FtpsUploadFile
-                0x7e90a180                sAPI_NetworkGetCgact
-                0x7e90a184                sAPI_NetworkGetCfun
-                0x7e90a188                sAPI_SPIConfigInit
-                0x7e90a18c                sAPI_MsgQPoll
-                0x7e90a190                sAPI_GetTicks
-                0x7e90a194                sAPI_TcpipRecvfrom
-                0x7e90a198                sAPI_LcdClose
-                0x7e90a19c                sAPI_FotaImageWrite
-                0x7e90a1a0                sAPI_PinmuxFunc
-                0x7e90a1a4                sAPI_SysGetImei
-                0x7e90a1a8                sAPI_SendATCMDWaitResp
-                0x7e90a1ac                sAPI_LcdDisplayOff
-                0x7e90a1b0                sAPI_GpioSetValue
-                0x7e90a1b4                sAPI_TcpipInet_ntop
-                0x7e90a1b8                sAPI_SysGetCusVersion
-                0x7e90a1bc                sAPI_UsbVcomRead
-                0x7e90a1c0                sAPI_GetPowerUpEvent
-                0x7e90a1c4                sAPI_SmsDelAllMsg
-                0x7e90a1c8                sAPI_UartRxStatus
-                0x7e90a1cc                sAPI_MqttCfg
-                0x7e90a1d0                sAPI_CamPinConfig
-                0x7e90a1d4                sAPI_AudioSetPaCtrlConfig
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+ COMMON         0x7e9097e4      0x348 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
+                0x7e9097e4                input_data_len
+                0x7e9097e8                g_sms_demo_urc_rsp_msgQ
+                0x7e9097ec                input_data
+                0x7e909b24                g_sms_demo_msgQ
+                0x7e909b28                g_sms_demo_urc_process_msgQ
+ COMMON         0x7e909b2c        0xc build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
+                0x7e909b2c                simcomUI_msgq
+                0x7e909b30                urc_mqtt_msgq_1
+                0x7e909b34                simcomUIProcesser
+ COMMON         0x7e909b38        0x4 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e909b38                helloWorldProcesser
+ COMMON         0x7e909b3c       0x14 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e909b3c                BMS_tick
+                0x7e909b40                imei_value
+ COMMON         0x7e909b50      0x640 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x7e909b50                sAPI_AudioSetVolume
+                0x7e909b54                sAPI_AppPackageRead
+                0x7e909b58                sAPI_UartRefRegister
+                0x7e909b5c                sAPI_SysGetIccid
+                0x7e909b60                sAPI_ExtNorFlashBlock64kErase
+                0x7e909b64                sAPI_opendir
+                0x7e909b68                sAPI_Sprintf
+                0x7e909b6c                sAPI_disableDUMP
+                0x7e909b70                sAPI_HtpSrvConfig
+                0x7e909b74                sAPI_FotaImageVerify
+                0x7e909b78                sAPI_AudioStatus
+                0x7e909b7c                sAPI_SysGetImsi
+                0x7e909b80                sAPI_NetworkGetCgpaddr
+                0x7e909b84                sAPI_PocStopSound
+                0x7e909b88                sAPI_NetworkGetCgreg
+                0x7e909b8c                sAPI_NtpUpdate
+                0x7e909b90                sAPI_NetworkGetCpsi
+                0x7e909b94                sAPI_I2CReadEx
+                0x7e909b98                sAPI_SemaphoreAcquire
+                0x7e909b9c                sAPI_SmsSendStrogeMsg
+                0x7e909ba0                sAPI_TcpipGetaddrinfo
+                0x7e909ba4                sAPI_CamIspsizeSet
+                0x7e909ba8                sAPI_access
+                0x7e909bac                sAPI_TimerDelete
+                0x7e909bb0                sAPI_Printf
+                0x7e909bb4                sAPI_LcdClearScreen
+                0x7e909bb8                sAPI_TTSSetStatusCallBack
+                0x7e909bbc                sAPI_AudioMp3StreamStop
+                0x7e909bc0                sAPI_GpioGetDirection
+                0x7e909bc4                sAPI_SmsSendStorageMsg
+                0x7e909bc8                sAPI_NetworkSetCfun
+                0x7e909bcc                sAPI_TcpipSend
+                0x7e909bd0                sAPI_remove
+                0x7e909bd4                sAPI_HttpTerm
+                0x7e909bd8                sAPI_TcpipConnect
+                0x7e909bdc                sAPI_MqttConnect
+                0x7e909be0                sAPI_ContextUnlock
+                0x7e909be4                sAPI_GetPowerDownEvent
+                0x7e909be8                sAPI_MqttUNSubTopic
+                0x7e909bec                sAPI_TTSPlay
+                0x7e909bf0                sAPI_PocStartRecord
+                0x7e909bf4                sAPI_TcpipFreeaddrinfo
+                0x7e909bf8                sAPI_TTSStop
+                0x7e909bfc                sAPI_AppPackageWrite
+                0x7e909c00                sAPI_TaskGetCurrentRef
+                0x7e909c04                sAPI_TcpipPdpDeactive
+                0x7e909c08                sAPI_MqttAccq
+                0x7e909c0c                sAPI_SysPowerOff
+                0x7e909c10                sAPI_AudioGetPlayPath
+                0x7e909c14                sAPI_RtcEnableAlarm
+                0x7e909c18                sAPI_CamMclkOnOff
+                0x7e909c1c                sAPI_AudioSetPlayPath
+                0x7e909c20                sAPI_closedir
+                0x7e909c24                sAPI_SpiReadBytesEx
+                0x7e909c28                sAPI_UsbVcomRegisterCallbackEX
+                0x7e909c2c                sAPI_AesDecrypt
+                0x7e909c30                sAPI_AudioMp3StreamPlay
+                0x7e909c34                sAPI_TcpipHtonl
+                0x7e909c38                sAPI_StartShowLCD
+                0x7e909c3c                sAPI_AtSend
+                0x7e909c40                sAPI_TimerStop
+                0x7e909c44                sAPI_EnableInterrupts
+                0x7e909c48                sAPI_NetworkSetCgact
+                0x7e909c4c                sAPI_ExtNorFlashReadID
+                0x7e909c50                sAPI_AppPackageOpen
+                0x7e909c54                sAPI_TcpipClose
+                0x7e909c58                sAPI_GnssPowerStatusGet
+                0x7e909c5c                sAPI_NetStatusService
+                0x7e909c60                sAPI_frewind
+                0x7e909c64                sAPI_MutexLock
+                0x7e909c68                sAPI_SmsSendLongMsg
+                0x7e909c6c                sAPI_LcdOpen
+                0x7e909c70                sAPI_fsize
+                0x7e909c74                sAPI_TcpipGetsockopt
+                0x7e909c78                sAPI_TaskResume
+                0x7e909c7c                sAPI_WifiScanStop
+                0x7e909c80                sAPI_GpioGetValue
+                0x7e909c84                sAPI_SysGetimsi
+                0x7e909c88                sAPI_AudioWavFilePlay
+                0x7e909c8c                sAPI_AudioPlaySampleRate
+                0x7e909c90                sAPI_FtpsDeleteDirectory
+                0x7e909c94                sAPI_FtpsDeInit
+                0x7e909c98                sAPI_MutexDelete
+                0x7e909c9c                sAPI_TaskTerminate
+                0x7e909ca0                sAPI_AudioPlayMp3Cont
+                0x7e909ca4                sAPI_fseek
+                0x7e909ca8                sAPI_MqttSslCfg
+                0x7e909cac                sAPI_NetworkGetCnetci
+                0x7e909cb0                sAPI_SysGetBuildTime
+                0x7e909cb4                sAPI_AudRec
+                0x7e909cb8                sAPI_CamOpen
+                0x7e909cbc                sAPI_ContextLock
+                0x7e909cc0                sAPI_LcdWriteU16Data
+                0x7e909cc4                sAPI_Base64Encode
+                0x7e909cc8                sAPI_sscanf
+                0x7e909ccc                sAPI_setPinFunction
+                0x7e909cd0                sAPI_fwrite
+                0x7e909cd4                sAPI_TcpipAccept
+                0x7e909cd8                sAPI_MqttWillTopic
+                0x7e909cdc                sAPI_SemaphoreDelete
+                0x7e909ce0                sAPI_FtpsGetFileSize
+                0x7e909ce4                sAPI_ReadFlashAppPartition
+                0x7e909ce8                sAPI_GetUsedSize
+                0x7e909cec                sAPI_SetPowerKeyOffFunc
+                0x7e909cf0                sAPI_TcpipGetaddrinfoWithPcid
+                0x7e909cf4                sAPI_TcpipSocketWithCallback
+                0x7e909cf8                sAPI_HttpInit
+                0x7e909cfc                sAPI_TcpipHtons
+                0x7e909d00                sAPI_EnableDump
+                0x7e909d04                sAPI_SysGetVersion
+                0x7e909d08                sAPI_AudioGetMicGain
+                0x7e909d0c                sAPI_PowerKeyRegisterCallback
+                0x7e909d10                sAPI_ReadAdc
+                0x7e909d14                sAPI_NetworkGetCreg
+                0x7e909d18                sAPI_Calloc
+                0x7e909d1c                sAPI_ExtNorFlashShowSupportList
+                0x7e909d20                sAPI_SPIReadBytes
+                0x7e909d24                sAPI_GetSysLocalTime
+                0x7e909d28                sAPI_stat
+                0x7e909d2c                sAPI_FtpsDownloadFile
+                0x7e909d30                sAPI_CamPinConfigUninstall
+                0x7e909d34                sAPI_Base64Decode
+                0x7e909d38                sAPI_Gettimeofday
+                0x7e909d3c                sAPI_AppPackageCrc
+                0x7e909d40                sAPI_seekdir
+                0x7e909d44                sAPI_NetworkGetCgatt
+                0x7e909d48                sAPI_SpiConfigInitEx
+                0x7e909d4c                sAPI_UartRs485DePinAssign
+                0x7e909d50                sAPI_SmsSetNewMsgInd
+                0x7e909d54                sAPI_AudioSetMicGain
+                0x7e909d58                sAPI_Debug
+                0x7e909d5c                sAPI_SPIWriteBytes
+                0x7e909d60                sAPI_FlagDelete
+                0x7e909d64                sAPI_SimcardPinSet
+                0x7e909d68                sAPI_TTSSetParameters
+                0x7e909d6c                sAPI_NetworkSetCtzu
+                0x7e909d70                sAPI_AmrStopStreamRecord
+                0x7e909d74                sAPI_TcpipPdpActive
+                0x7e909d78                sAPI_SimcardSwitchMsg
+                0x7e909d7c                sAPI_ExtSpiReadBytes
+                0x7e909d80                sAPI_ReadVbat
+                0x7e909d84                sAPI_HttpRead
+                0x7e909d88                sAPI_ExtNorFlashInit
+                0x7e909d8c                sAPI_TcpipSendto
+                0x7e909d90                sAPI_SystemAlarmClock2Wakeup
+                0x7e909d94                sAPI_TcpipPdpDeactiveNotify
+                0x7e909d98                sAPI_SystemSleepExSet
+                0x7e909d9c                sAPI_FtpsList
+                0x7e909da0                sAPI_MqttDisConnect
+                0x7e909da4                sAPI_PocPlaySound
+                0x7e909da8                sAPI_FtpsGetCurrentDirectory
+                0x7e909dac                sAPI_GettimeofdaySyncRtc
+                0x7e909db0                sAPI_NetworkGetcnetci
+                0x7e909db4                sAPI_RtcRegisterCB
+                0x7e909db8                sAPI_RtcSetAlarm
+                0x7e909dbc                sAPI_MqttUnsub
+                0x7e909dc0                sAPI_WifiScanStart
+                0x7e909dc4                sAPI_Vsnprintf
+                0x7e909dc8                sAPI_FtpsChangeDirectory
+                0x7e909dcc                sAPI_ftruncate
+                0x7e909dd0                sAPI_SslClose
+                0x7e909dd4                sAPI_TcpipSocket_with_callback
+                0x7e909dd8                sAPI_LcdSetBLPWM
+                0x7e909ddc                sAPI_TcpipListen
+                0x7e909de0                sAPI_MsgQDelete
+                0x7e909de4                sAPI_TimerGetStatus
+                0x7e909de8                sAPI_ExtNorFlashSectorErase
+                0x7e909dec                sAPI_SslGetContextIdMsg
+                0x7e909df0                sAPI_fclose
+                0x7e909df4                sAPI_RegisterXipTaskCb
+                0x7e909df8                sAPI_CallDialMsg
+                0x7e909dfc                sAPI_TcpipRecv
+                0x7e909e00                sAPI_AudioPlay
+                0x7e909e04                sAPI_PocGetPcmAvail
+                0x7e909e08                sAPI_HttpPostfile
+                0x7e909e0c                sAPI_telldir
+                0x7e909e10                sAPI_MqttStart
+                0x7e909e14                sAPI_GetCpuUid
+                0x7e909e18                sAPI_TaskDelete
+                0x7e909e1c                sAPI_Realloc
+                0x7e909e20                OsaMemAlloc
+                0x7e909e24                sAPI_CallAutoAnswer
+                0x7e909e28                sAPI_GetPowerKeyStatus
+                0x7e909e2c                sAPI_TcpipInetAddr
+                0x7e909e30                sAPI_LcdWriteCmd
+                0x7e909e34                sAPI_I2CWrite
+                0x7e909e38                sAPI_SemaphorePoll
+                0x7e909e3c                sAPI_SslRead
+                0x7e909e40                sAPI_CacheCleanMemory
+                0x7e909e44                sAPI_UartRegisterCallback
+                0x7e909e48                sAPI_PWMConfigEx
+                0x7e909e4c                sAPI_CamParaSet
+                0x7e909e50                sAPI_NetworkGetCgdcont
+                0x7e909e54                sAPI_MqttWillMsg
+                0x7e909e58                sAPI_MqttTopic
+                0x7e909e5c                sAPI_TimerCreate
+                0x7e909e60                sAPI_TcpipGethostbyname
+                0x7e909e64                sAPI_ExtNorFlashCs
+                0x7e909e68                sAPI_CamGetGlobalConfig
+                0x7e909e6c                sAPI_PocPcmRead
+                0x7e909e70                sAPI_NetworkSetCops
+                0x7e909e74                sAPI_FtpsDeleteFile
+                0x7e909e78                sAPI_I2CRead
+                0x7e909e7c                sAPI_rename
+                0x7e909e80                sAPI_ExtNorFlashRead
+                0x7e909e84                sAPI_NetworkGetCops
+                0x7e909e88                sAPI_CamLdoOnOff
+                0x7e909e8c                sAPI_FtpsLogin
+                0x7e909e90                sAPI_GnssPowerStatusSet
+                0x7e909e94                sAPI_UartSetConfig
+                0x7e909e98                sAPI_TcpipGetSocketErrno
+                0x7e909e9c                sAPI_CallEndMsg
+                0x7e909ea0                sAPI_AppPartitionBinSize
+                0x7e909ea4                sAPI_UartControl
+                0x7e909ea8                sAPI_LcdWriteData
+                0x7e909eac                sAPI_LcdWrite
+                0x7e909eb0                sAPI_NetworkGetCGAUTH
+                0x7e909eb4                sAPI_LcdBacklightAndIOVccCtrlPin
+                0x7e909eb8                sAPI_NetworkSetCnmp
+                0x7e909ebc                sAPI_SmsSendMsg
+                0x7e909ec0                sAPI_Ping
+                0x7e909ec4                sAPI_MqttPayload
+                0x7e909ec8                sAPI_TcpipInetNtoa
+                0x7e909ecc                sAPI_DisableInterrupts
+                0x7e909ed0                sAPI_SetRealTimeClock
+                0x7e909ed4                sAPI_FlagSet
+                0x7e909ed8                sAPI_WriteFlash
+                0x7e909edc                sAPI_SimcardHotSwapMsg
+                0x7e909ee0                sAPI_FtpsLogout
+                0x7e909ee4                sAPI_Time
+                0x7e909ee8                sAPI_TaskSuspend
+                0x7e909eec                sAPI_SslSetContextIdMsg
+                0x7e909ef0                sAPI_TcpipSelect
+                0x7e909ef4                sAPI_GpioConfig
+                0x7e909ef8                sAPI_SimPinGet
+                0x7e909efc                sAPI_UsbVcomWrite
+                0x7e909f00                sAPI_TcpipInetNtop
+                0x7e909f04                sAPI_TaskSleep
+                0x7e909f08                sAPI_CamOpenEx
+                0x7e909f0c                sAPI_UartPrintf
+                0x7e909f10                sAPI_HttpData
+                0x7e909f14                sAPI_UartRead
+                0x7e909f18                sAPI_EraseFlashSector
+                0x7e909f1c                sAPI_FtpsInit
+                0x7e909f20                sAPI_HttpHead
+                0x7e909f24                sAPI_SysReset
+                0x7e909f28                sAPI_AudioSetAmrRateLevel
+                0x7e909f2c                sAPI_TcpipInet_ntoa
+                0x7e909f30                sAPI_PocInitLib
+                0x7e909f34                sAPI_AudioRecord
+                0x7e909f38                sAPI_UsbVbusDetect
+                0x7e909f3c                sAPI_I2CWriteEx
+                0x7e909f40                sAPI_TcpipInet_pton
+                0x7e909f44                sAPI_ForceDownload
+                0x7e909f48                sAPI_WifiSetHandler
+                0x7e909f4c                sAPI_SmsWriteMsg
+                0x7e909f50                sAPI_SysGetRFVersion
+                0x7e909f54                sAPI_setGpioDirection
+                0x7e909f58                sAPI_TcpipBind
+                0x7e909f5c                sAPI_GetRealTimeClock
+                0x7e909f60                sAPI_NetworkGetCsq
+                0x7e909f64                sAPI_HttpPara
+                0x7e909f68                sAPI_MsgQRecv
+                0x7e909f6c                sAPI_MsgQCreate
+                0x7e909f70                sAPI_UartWriteString
+                0x7e909f74                sAPI_AesEncrypt
+                0x7e909f78                sAPI_enableDUMP
+                0x7e909f7c                sAPI_ReadFlash
+                0x7e909f80                sAPI_UsbVcomRegisterCallback
+                0x7e909f84                sAPI_UartGetConfig
+                0x7e909f88                sAPI_MqttStop
+                0x7e909f8c                sAPI_AudioAmrStreamPlay
+                0x7e909f90                sAPI_ExtNorFlashWrite
+                0x7e909f94                sAPI_FtpsDownloadFileToBuffer
+                0x7e909f98                sAPI_TcpipGetpeername
+                0x7e909f9c                sAPI_TcpipNtohs
+                0x7e909fa0                sAPI_SysGetHplmn
+                0x7e909fa4                sAPI_AudioGetVolume
+                0x7e909fa8                sAPI_DisableDump
+                0x7e909fac                sAPI_GpioSetDirection
+                0x7e909fb0                sAPI_AppDownload
+                0x7e909fb4                sAPI_GpioWakeupEnable
+                0x7e909fb8                sAPI_SystemSleepGet
+                0x7e909fbc                sAPI_CallStateMsg
+                0x7e909fc0                sAPI_SimPinSet
+                0x7e909fc4                sAPI_SemaphoreCreate
+                0x7e909fc8                sAPI_YUVtoRGBZoomOut
+                0x7e909fcc                sAPI_fopen
+                0x7e909fd0                sAPI_MutexCreate
+                0x7e909fd4                sAPI_TimerStart
+                0x7e909fd8                sAPI_MsgQSend
+                0x7e909fdc                sAPI_MqttRel
+                0x7e909fe0                sAPI_UartRs485DePinAssignEx
+                0x7e909fe4                sAPI_NetworkGetCgauth
+                0x7e909fe8                sAPI_GetSize
+                0x7e909fec                sAPI_NetworkSetCgdcont
+                0x7e909ff0                sAPI_TcpipGetErrno
+                0x7e909ff4                sAPI_TcpipGetaddrinfo_with_pcid
+                0x7e909ff8                sAPI_GetCamBuf
+                0x7e909ffc                sAPI_SpiWriteBytesEx
+                0x7e90a000                sAPI_NetworkInit
+                0x7e90a004                sAPI_Snprintf
+                0x7e90a008                sAPI_SemaphoreRelease
+                0x7e90a00c                sAPI_SmsDelOneMsg
+                0x7e90a010                sAPI_TcpipSocket
+                0x7e90a014                sAPI_TcpipInet_addr
+                0x7e90a018                pUserApi
+                0x7e90a01c                sAPI_TcpipGetSocketPdpAddr
+                0x7e90a020                sAPI_InitNetLight
+                0x7e90a024                sAPI_GetFreeSize
+                0x7e90a028                sAPI_NetworkSetCgatt
+                0x7e90a02c                sAPI_CallAnswerMsg
+                0x7e90a030                sAPI_PocStopRecord
+                0x7e90a034                sAPI_SmsReadMsg
+                0x7e90a038                sAPI_FtpsSslConfig
+                0x7e90a03c                sAPI_I2CConfigInit
+                0x7e90a040                sAPI_AudioStop
+                0x7e90a044                sAPI_mkdir
+                0x7e90a048                sAPI_AudioPcmStop
+                0x7e90a04c                sAPI_SetSysLocalTime
+                0x7e90a050                sAPI_GetSystemInfo
+                0x7e90a054                sAPI_CamWriteReg
+                0x7e90a058                sAPI_GetStatisticsData
+                0x7e90a05c                sAPI_TcpipShutdown
+                0x7e90a060                sAPI_PocCleanBufferData
+                0x7e90a064                sAPI_AudioPlayAmrCont
+                0x7e90a068                sAPI_LocGet
+                0x7e90a06c                sAPI_MqttConnLostCb
+                0x7e90a070                sAPI_UrcRefRelease
+                0x7e90a074                sAPI_TaskCreate
+                0x7e90a078                sAPI_FlagCreate
+                0x7e90a07c                sAPI_NetworkGetCnmp
+                0x7e90a080                sAPI_ftell
+                0x7e90a084                sAPI_FlagWait
+                0x7e90a088                sAPI_StopShowLCD
+                0x7e90a08c                sAPI_UartWrite
+                0x7e90a090                sAPI_fsync
+                0x7e90a094                sAPI_HttpAction
+                0x7e90a098                sAPI_TcpipSetsockopt
+                0x7e90a09c                sAPI_AppPackageClose
+                0x7e90a0a0                sAPI_UartRegisterCallbackEX
+                0x7e90a0a4                sAPI_MqttSubTopic
+                0x7e90a0a8                sAPI_RestoreInterrupts
+                0x7e90a0ac                sAPI_SystemSleepSet
+                0x7e90a0b0                sAPI_SimcardPinGet
+                0x7e90a0b4                sAPI_MqttPub
+                0x7e90a0b8                sAPI_FtpsGetTransferType
+                0x7e90a0bc                sAPI_LcdSetBrightness
+                0x7e90a0c0                sAPI_LcdDisplayOn
+                0x7e90a0c4                sAPI_DelayUs
+                0x7e90a0c8                sAPI_AudioPcmPlay
+                0x7e90a0cc                sAPI_GpioConfigInterrupt
+                0x7e90a0d0                sAPI_TcpipInetPton
+                0x7e90a0d4                sAPI_SystemSleepExGet
+                0x7e90a0d8                sAPI_AmrStreamRecord
+                0x7e90a0dc                sAPI_CamClose
+                0x7e90a0e0                sAPI_MsgQSendSuspend
+                0x7e90a0e4                sAPI_TcpipGetsockname
+                0x7e90a0e8                sAPI_HtpUpdate
+                0x7e90a0ec                sAPI_TcpipIoctlsocket
+                0x7e90a0f0                sAPI_AudioAmrStreamStop
+                0x7e90a0f4                OsaMemFree
+                0x7e90a0f8                sAPI_SetVddAux
+                0x7e90a0fc                sAPI_NetworkSetCgauth
+                0x7e90a100                sAPI_UrcRefRegister
+                0x7e90a104                sAPI_PWMConfig
+                0x7e90a108                sAPI_FotaServiceBegin
+                0x7e90a10c                sAPI_readdir
+                0x7e90a110                sAPI_FtpsCreateDirectory
+                0x7e90a114                sAPI_FtpsTransferType
+                0x7e90a118                sAPI_fread
+                0x7e90a11c                sAPI_SslSend
+                0x7e90a120                sAPI_MutexUnLock
+                0x7e90a124                sAPI_SslHandShake
+                0x7e90a128                sAPI_RtcGetAlarm
+                0x7e90a12c                sAPI_MqttSub
+                0x7e90a130                sAPI_NetworkSetCGAUTH
+                0x7e90a134                sAPI_FtpsUploadFile
+                0x7e90a138                sAPI_NetworkGetCgact
+                0x7e90a13c                sAPI_NetworkGetCfun
+                0x7e90a140                sAPI_SPIConfigInit
+                0x7e90a144                sAPI_MsgQPoll
+                0x7e90a148                sAPI_GetTicks
+                0x7e90a14c                sAPI_TcpipRecvfrom
+                0x7e90a150                sAPI_LcdClose
+                0x7e90a154                sAPI_FotaImageWrite
+                0x7e90a158                sAPI_PinmuxFunc
+                0x7e90a15c                sAPI_SysGetImei
+                0x7e90a160                sAPI_SendATCMDWaitResp
+                0x7e90a164                sAPI_LcdDisplayOff
+                0x7e90a168                sAPI_GpioSetValue
+                0x7e90a16c                sAPI_TcpipInet_ntop
+                0x7e90a170                sAPI_SysGetCusVersion
+                0x7e90a174                sAPI_UsbVcomRead
+                0x7e90a178                sAPI_GetPowerUpEvent
+                0x7e90a17c                sAPI_SmsDelAllMsg
+                0x7e90a180                sAPI_UartRxStatus
+                0x7e90a184                sAPI_MqttCfg
+                0x7e90a188                sAPI_CamPinConfig
+                0x7e90a18c                sAPI_AudioSetPaCtrlConfig
                 0x7e980000                end = 0x7e980000
 LOAD build/packag-simcom_application/simcom_application.lib
 LOAD build/packag-simcom_demo/simcom_demo.lib
@@ -5534,85 +4639,47 @@ LOAD E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-e
 OUTPUT(build/customer_app.elf elf32-littlearm)
 
 .bss.gUrcMsgQueue
-<<<<<<< HEAD
-                0x7e90a218        0x4
+                0x7e90a190        0x4
  .bss.gUrcMsgQueue
-                0x7e90a218        0x4 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
+                0x7e90a190        0x4 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
 
 .bss.gUrcProcessTask
-                0x7e90a21c        0x4
+                0x7e90a194        0x4
  .bss.gUrcProcessTask
-                0x7e90a21c        0x4 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
+                0x7e90a194        0x4 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
 
 .bss.simcomUIProcesserStack
-                0x7e90a220     0x7800
+                0x7e90a198     0x7800
  .bss.simcomUIProcesserStack
-                0x7e90a220     0x7800 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
+                0x7e90a198     0x7800 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
 
 .bss.helloWorldProcesserStack
-                0x7e911a20      0x400
+                0x7e911998      0x400
  .bss.helloWorldProcesserStack
-                0x7e911a20      0x400 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
+                0x7e911998      0x400 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
 
 .bss.DMS_is_diff
-                0x7e911e20        0x1
+                0x7e911d98        0x1
  .bss.DMS_is_diff
-                0x7e911e20        0x1 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911e20                DMS_is_diff
+                0x7e911d98        0x1 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e911d98                DMS_is_diff
 
-.bss.DMS_state  0x7e911e21        0x1
+.bss.DMS_state  0x7e911d99        0x1
  .bss.DMS_state
-                0x7e911e21        0x1 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911e21                DMS_state
+                0x7e911d99        0x1 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e911d99                DMS_state
 
-.bss.loggerID   0x7e911e22        0x8
- .bss.loggerID  0x7e911e22        0x8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911e22                loggerID
+.bss.loggerID   0x7e911d9a        0x8
+ .bss.loggerID  0x7e911d9a        0x8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e911d9a                loggerID
 
 .bss.test_payload
-                0x7e911e2a       0xc8
+                0x7e911da2       0xc8
  .bss.test_payload
-                0x7e911e2a       0xc8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911e2a                test_payload
+                0x7e911da2       0xc8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x7e911da2                test_payload
 
-.debug_info     0x00000000    0x4ec8d
-=======
-                0x7e90a1d8        0x4
- .bss.gUrcMsgQueue
-                0x7e90a1d8        0x4 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
-
-.bss.gUrcProcessTask
-                0x7e90a1dc        0x4
- .bss.gUrcProcessTask
-                0x7e90a1dc        0x4 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
-
-.bss.simcomUIProcesserStack
-                0x7e90a1e0     0x7800
- .bss.simcomUIProcesserStack
-                0x7e90a1e0     0x7800 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
-
-.bss.helloWorldProcesserStack
-                0x7e9119e0      0x400
- .bss.helloWorldProcesserStack
-                0x7e9119e0      0x400 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-
-.bss.DMS_state  0x7e911de0        0x1
- .bss.DMS_state
-                0x7e911de0        0x1 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911de0                DMS_state
-
-.bss.loggerID   0x7e911de1        0x8
- .bss.loggerID  0x7e911de1        0x8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911de1                loggerID
-
-.bss.test_payload
-                0x7e911de9       0xc8
- .bss.test_payload
-                0x7e911de9       0xc8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                0x7e911de9                test_payload
-
-.debug_info     0x00000000    0x4ed4e
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+.debug_info     0x00000000    0x4ec9e
  .debug_info    0x00000000     0x70da build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_info    0x000070da     0x981f build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
  .debug_info    0x000108f9     0x7636 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
@@ -5621,15 +4688,10 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_info    0x000267d6     0x7029 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
  .debug_info    0x0002d7ff     0x73ef build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .debug_info    0x00034bee     0x7140 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-<<<<<<< HEAD
- .debug_info    0x0003bd2e     0x998d build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_info    0x000456bb     0x95d2 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-=======
- .debug_info    0x0003bd2e     0x9a4e build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_info    0x0004577c     0x95d2 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+ .debug_info    0x0003bd2e     0x999e build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .debug_info    0x000456cc     0x95d2 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
 
-.debug_abbrev   0x00000000     0x2154
+.debug_abbrev   0x00000000     0x2130
  .debug_abbrev  0x00000000      0x2cc build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_abbrev  0x000002cc      0x48e build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
  .debug_abbrev  0x0000075a      0x361 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
@@ -5638,14 +4700,10 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_abbrev  0x0000108b      0x286 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
  .debug_abbrev  0x00001311      0x352 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .debug_abbrev  0x00001663      0x2e8 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
- .debug_abbrev  0x0000194b      0x49e build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_abbrev  0x00001de9      0x36b simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+ .debug_abbrev  0x0000194b      0x47a build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .debug_abbrev  0x00001dc5      0x36b simcom_lib/libs/simcom_lib.lib(simcom_api.o)
 
-<<<<<<< HEAD
-.debug_loc      0x00000000     0x2294
-=======
-.debug_loc      0x00000000     0x22bd
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+.debug_loc      0x00000000     0x22db
  .debug_loc     0x00000000       0x42 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_loc     0x00000042      0x97c build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
  .debug_loc     0x000009be      0x262 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
@@ -5654,15 +4712,10 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_loc     0x0000124a       0x13 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
  .debug_loc     0x0000125d      0x158 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .debug_loc     0x000013b5       0x4b build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
-<<<<<<< HEAD
- .debug_loc     0x00001400      0xbae build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_loc     0x00001fae      0x2e6 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-=======
- .debug_loc     0x00001400      0xbd7 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_loc     0x00001fd7      0x2e6 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+ .debug_loc     0x00001400      0xbf5 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .debug_loc     0x00001ff5      0x2e6 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
 
-.debug_aranges  0x00000000      0x2c0
+.debug_aranges  0x00000000      0x2b8
  .debug_aranges
                 0x00000000       0x20 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_aranges
@@ -5680,11 +4733,11 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_aranges
                 0x000001a8       0x30 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
  .debug_aranges
-                0x000001d8       0x88 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                0x000001d8       0x80 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
  .debug_aranges
-                0x00000260       0x60 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+                0x00000258       0x60 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
 
-.debug_ranges   0x00000000      0x2d8
+.debug_ranges   0x00000000      0x2d0
  .debug_ranges  0x00000000       0x10 build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_ranges  0x00000010       0x60 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
  .debug_ranges  0x00000070       0x30 build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
@@ -5693,11 +4746,10 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_ranges  0x00000108       0x18 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
  .debug_ranges  0x00000120       0x30 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .debug_ranges  0x00000150       0x20 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
- .debug_ranges  0x00000170       0xf8 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_ranges  0x00000268       0x70 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+ .debug_ranges  0x00000170       0xf0 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .debug_ranges  0x00000260       0x70 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
 
-<<<<<<< HEAD
-.debug_line     0x00000000     0x3dc5
+.debug_line     0x00000000     0x3db6
  .debug_line    0x00000000      0x4ae build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_line    0x000004ae      0x928 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
  .debug_line    0x00000dd6      0x5df build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
@@ -5706,23 +4758,10 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_line    0x00001e3d      0x4af build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
  .debug_line    0x000022ec      0x53f build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .debug_line    0x0000282b      0x4cf build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
- .debug_line    0x00002cfa      0x9f9 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_line    0x000036f3      0x6d2 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
-=======
-.debug_line     0x00000000     0x3d26
- .debug_line    0x00000000      0x49e build/packag-simcom_application/simcom_application.lib(simcom_application.o)
- .debug_line    0x0000049e      0x914 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
- .debug_line    0x00000db2      0x5cb build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
- .debug_line    0x0000137d      0x596 build/packag-simcom_demo/simcom_demo.lib(cus_uart.o)
- .debug_line    0x00001913      0x4d2 build/packag-simcom_demo/simcom_demo.lib(cus_usb_vcom.o)
- .debug_line    0x00001de5      0x49f build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
- .debug_line    0x00002284      0x52f build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
- .debug_line    0x000027b3      0x4bf build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
- .debug_line    0x00002c72      0x9e2 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_line    0x00003654      0x6d2 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
->>>>>>> 21105030af2978541fee231fae04ed008a6ed0b6
+ .debug_line    0x00002cfa      0x9ea build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .debug_line    0x000036e4      0x6d2 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
 
-.debug_str      0x00000000     0x86ae
+.debug_str      0x00000000     0x86a8
  .debug_str     0x00000000     0x585e build/packag-simcom_application/simcom_application.lib(simcom_application.o)
                                0x75e4 (size before relaxing)
  .debug_str     0x0000585e      0x703 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
@@ -5739,9 +4778,9 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
                                0x764a (size before relaxing)
  .debug_str     0x00006225       0x75 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
                                0x75c0 (size before relaxing)
- .debug_str     0x0000629a      0x385 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
-                               0x7a68 (size before relaxing)
- .debug_str     0x0000661f     0x208f simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+ .debug_str     0x0000629a      0x37f build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+                               0x7a62 (size before relaxing)
+ .debug_str     0x00006619     0x208f simcom_lib/libs/simcom_lib.lib(simcom_api.o)
                                0x9615 (size before relaxing)
 
 .comment        0x00000000       0x7f
@@ -5844,7 +4883,7 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .ARM.attributes
                 0x00000677       0x29 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivmoddi4.o)
 
-.debug_frame    0x00000000     0x13a0
+.debug_frame    0x00000000     0x1384
  .debug_frame   0x00000000       0x2c build/packag-simcom_application/simcom_application.lib(simcom_application.o)
  .debug_frame   0x0000002c      0x218 build/packag-simcom_demo/simcom_demo.lib(demo_sms.o)
  .debug_frame   0x00000244       0x6c build/packag-simcom_demo/simcom_demo.lib(cus_urc.o)
@@ -5853,36 +4892,36 @@ OUTPUT(build/customer_app.elf elf32-littlearm)
  .debug_frame   0x00000460       0x48 build/packag-simcom_demo/simcom_demo.lib(cus_key.o)
  .debug_frame   0x000004a8       0xc0 build/packag-simcom_demo/simcom_demo.lib(simcom_demo.o)
  .debug_frame   0x00000568       0x90 build/packag-simcom_demo/simcom_demo.lib(demo_helloworld.o)
- .debug_frame   0x000005f8      0x234 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
- .debug_frame   0x0000082c       0xb8 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
- .debug_frame   0x000008e4       0x30 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-atoi.o)
- .debug_frame   0x00000914       0x6c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
- .debug_frame   0x00000980       0x48 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mbtowc_r.o)
- .debug_frame   0x000009c8       0x38 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memset.o)
- .debug_frame   0x00000a00       0x80 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-snprintf.o)
- .debug_frame   0x00000a80       0x7c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-sprintf.o)
- .debug_frame   0x00000afc       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strcpy.o)
- .debug_frame   0x00000b1c       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strlen-stub.o)
- .debug_frame   0x00000b3c       0x44 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncmp.o)
- .debug_frame   0x00000b80       0x34 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncpy.o)
- .debug_frame   0x00000bb4       0xa4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
- .debug_frame   0x00000c58       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
- .debug_frame   0x00000c98       0x3c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-wctomb_r.o)
- .debug_frame   0x00000cd4       0x7c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
- .debug_frame   0x00000d50       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-localeconv.o)
- .debug_frame   0x00000d90       0x34 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memchr-stub.o)
- .debug_frame   0x00000dc4      0x268 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
- .debug_frame   0x0000102c       0x30 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-s_frexp.o)
- .debug_frame   0x0000105c       0x74 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfiprintf.o)
- .debug_frame   0x000010d0       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memmove.o)
- .debug_frame   0x00001110       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001130       0xac E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x000011dc       0x50 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x0000122c       0xc4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x000012f0       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_unorddf2.o)
- .debug_frame   0x00001310       0x24 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_fixdfsi.o)
- .debug_frame   0x00001334       0x2c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00001360       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x000005f8      0x218 build/packag-simcom_demo/simcom_demo.lib(di_config.o)
+ .debug_frame   0x00000810       0xb8 simcom_lib/libs/simcom_lib.lib(simcom_api.o)
+ .debug_frame   0x000008c8       0x30 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-atoi.o)
+ .debug_frame   0x000008f8       0x6c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-locale.o)
+ .debug_frame   0x00000964       0x48 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x000009ac       0x38 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memset.o)
+ .debug_frame   0x000009e4       0x80 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-snprintf.o)
+ .debug_frame   0x00000a64       0x7c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-sprintf.o)
+ .debug_frame   0x00000ae0       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strcpy.o)
+ .debug_frame   0x00000b00       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strlen-stub.o)
+ .debug_frame   0x00000b20       0x44 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncmp.o)
+ .debug_frame   0x00000b64       0x34 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strncpy.o)
+ .debug_frame   0x00000b98       0xa4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-strtol.o)
+ .debug_frame   0x00000c3c       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfprintf.o)
+ .debug_frame   0x00000c7c       0x3c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00000cb8       0x7c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-dtoa.o)
+ .debug_frame   0x00000d34       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-localeconv.o)
+ .debug_frame   0x00000d74       0x34 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00000da8      0x268 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-mprec.o)
+ .debug_frame   0x00001010       0x30 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-s_frexp.o)
+ .debug_frame   0x00001040       0x74 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-svfiprintf.o)
+ .debug_frame   0x000010b4       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libc.a(lib_a-memmove.o)
+ .debug_frame   0x000010f4       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001114       0xac E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x000011c0       0x50 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00001210       0xc4 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x000012d4       0x20 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_unorddf2.o)
+ .debug_frame   0x000012f4       0x24 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00001318       0x2c E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00001344       0x40 E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.3.1\thumb\v7-ar\libgcc.a(_udivmoddi4.o)
 
 .stabstr        0x00000000       0xdf
  .stabstr       0x00000000       0xdf E:\BMS_IOT\Firmware\PKG_BMS_IOT\sc_app\..\sc_tool\cross_tool\gcc-arm-none-eabi\arm-none-eabi\lib\thumb\v7-ar\libnosys.a(close.o)

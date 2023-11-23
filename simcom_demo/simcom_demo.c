@@ -212,7 +212,7 @@ void sAPP_SimcomUIDemo(void)
     {
         sAPI_Debug("msgQ create fail");
     }
-    status = sAPI_MsgQCreate(&urc_mqtt_msgq_1, "urc_mqtt_msgq_1", (sizeof(SIM_MSG_T)), 4, SC_FIFO); // msgQ for subscribed data transfer
+    status = sAPI_MsgQCreate(&urc_mqtt_msgq_1, "urc_mqtt_msgq_1", (sizeof(SIM_MSG_T)), 1, SC_FIFO); // msgQ for subscribed data transfer
     if (status != SC_SUCCESS)
     {
         sAPI_Debug("message queue creat err!\n");

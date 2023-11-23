@@ -7,6 +7,7 @@
 #define MQTT_SEND_TIME (60*200)
 
 char loggerID[8] = "";
+UINT16 version = 1;
 /*
 Từ khóa "extern" chỉ ra 1 biến hoặc 1 hàm đã được khai báo ở 1 nơi
 khác trong mã nguồn.
@@ -24,7 +25,7 @@ BOOL first_start = 1;
 INT32 BMS_tick;
 char imei_value[16];
 UINT8 DMS_state=0; // updated by MQTT control
-
+UINT8 DMS_is_diff=0;
 
 void GetCSQ()
 {
@@ -175,7 +176,6 @@ void addMsg(INT8 *buff, char *msg)
 void uart_read()
 {
     SIM_MSG_T optionMsg = {0, 0, 0, NULL};
-    UINT8 DMS_is_diff=0;
     INT32 totallen = 0;
     INT32 packetlen = 0;
     INT8 nbBattery = 0;
@@ -232,16 +232,27 @@ void uart_read()
     //     sAPI_UartWrite(SC_UART3,temp,strlen(temp));
     // }
 
-
-    bufferpos = 0;
-    if (buffer[bufferpos] != 0x4e || buffer[bufferpos + 1] != 0x57) // 2 bytes header
-        return;
-    totallen = (buffer[bufferpos + 2] << 8) + (buffer[bufferpos + 3]) + 2; // 2 byte length
-    if (totallen != packetlen)
-        return;
     bufferpos += 11;
     SCsysTime_t t1;
     sAPI_GetSysLocalTime(&t1);
+
+    bufferpos = 0;
+    if (buffer[bufferpos] != 0x4e || buffer[bufferpos + 1] != 0x57) // 2 bytes header
+    {
+        tmp = sAPI_GetTicks()/200;
+        sprintf(payload, "%4d%02d%02d%02d%02d%02d\tMCU:%d\tVER:%d",t1.tm_year,t1.tm_mon,t1.tm_mday,t1.tm_hour,t1.tm_min,t1.tm_sec,tmp,version);
+        Publish_array(payload);
+        sAPI_Free(payload);
+        return;
+    }
+        
+    totallen = (buffer[bufferpos + 2] << 8) + (buffer[bufferpos + 3]) + 2; // 2 byte length
+    if (totallen != packetlen)
+    {
+        return;
+    }
+        
+
     while (bufferpos < totallen)
         switch (buffer[bufferpos])
         {
@@ -720,40 +731,22 @@ void uart_read()
             break;
         }
             
-    memset(temp, 0, 300);    
+    memset(temp, 0, 300);
+    tmp = sAPI_GetTicks()/200;
+    sprintf(temp, "\tMCU:%d\tVER:%d",tmp,version);    
     addMsg(payload,temp);
+    Publish_array(payload);
 
-    if(sAPI_GetTicks()>BMS_tick) //read BMS and send update to server every 1 min
-    {
-        if(sAPI_GetTicks()-BMS_tick>MQTT_SEND_TIME || BMS_tick< (200*5) ) //1 mins
-        {
-            Publish_array(payload);
-            BMS_tick=sAPI_GetTicks();
-            memset(test_payload, 0, 50);
-            sprintf(test_payload, "\n Finish Reading BMS! Send Complete");
-            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
-        }
-    }
-    else
-    {
-        BMS_tick=sAPI_GetTicks();
-    } 
-    //print test        
+    //print test 
+    memset(test_payload, 0, 50);
+    sprintf(test_payload, "\n Finish Reading BMS! Send Complete");
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
     // sAPI_UartWrite(SC_UART3, payload,strlen(payload));
     
     sAPI_Free(buffer);
     sAPI_Free(payload);
 
-    //DMS state handle
-    if(DMS_is_diff)
-    {
-        memset(test_payload, 0, 50);
-        sprintf(test_payload, "\n DMS diff = %d DMS state = %d",DMS_is_diff, DMS_state);
-        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
 
-        uart_send("DMS",DMS_state);
-        DMS_is_diff=0;
-    }
 }
 
 void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
@@ -823,9 +816,9 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         sAPI_UartWrite(SC_UART,frame,(20 + size));
         sAPI_TaskSleep(200);
         
-        memset(mqtt_rep,0,sizeof(mqtt_rep));
-        sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tCMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
-        Publish_array(mqtt_rep);
+        // memset(mqtt_rep,0,sizeof(mqtt_rep));
+        // sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tCMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
+        // Publish_array(mqtt_rep);
 
     }
     if(strncmp(topic,"DMS",strlen(topic))==0)
@@ -881,9 +874,9 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         sAPI_UartWrite(SC_UART,frame,(20 + size));
         sAPI_TaskSleep(200);       
 
-        memset(mqtt_rep,0,sizeof(mqtt_rep));
-        sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tDMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
-        Publish_array(mqtt_rep);
+        // memset(mqtt_rep,0,sizeof(mqtt_rep));
+        // sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tDMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
+        // Publish_array(mqtt_rep);
 
     }
     if(strncmp(topic,"OTA",strlen(topic)) == 0){
@@ -1080,7 +1073,7 @@ void di_config(void)
     sAPI_NetworkInit();  
 
     
-    BMS_tick= sAPI_GetTicks();
+    
 
 
     while (1)
@@ -1145,6 +1138,7 @@ void di_config(void)
             sprintf(test_payload, "\n Connect SUCCESSFUL");
             sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
             uart_read();
+            BMS_tick= sAPI_GetTicks();
             sAPI_GpioSetValue(9, 0);
             sAPI_TaskSleep(10);
             sAPI_GpioSetValue(9, 1);        
@@ -1174,8 +1168,30 @@ void di_config(void)
         MqttReceive(subtopic);//wait 10 secs for update from server 
         LED_sts^=1;
         sAPI_GpioSetValue(9, LED_sts);        
-        uart_read();
         
+        if(sAPI_GetTicks()>BMS_tick) //read BMS and send update to server every 1 min
+        {
+            if(sAPI_GetTicks()-BMS_tick>MQTT_SEND_TIME || BMS_tick< (200*60*5) ) //every 1 mins or first 5 mins
+            {
+                uart_read();
+                //DMS state handle
+                if(DMS_is_diff)
+                {
+                    memset(test_payload, 0, 50);
+                    sprintf(test_payload, "\n DMS diff = %d DMS state = %d",DMS_is_diff, DMS_state);
+                    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
+
+                    uart_send("DMS",DMS_state);
+                    DMS_is_diff=0;
+                    uart_read();
+                }
+                BMS_tick=sAPI_GetTicks();
+            }
+        }
+        else
+        {
+            BMS_tick=sAPI_GetTicks();
+        } 
 
         // memset(test_payload,0,sizeof(test_payload));
         // sprintf(test_payload, "[{\"pc\":\"Test\",\"lid\":\"1\",\"d\":%d}]",99);

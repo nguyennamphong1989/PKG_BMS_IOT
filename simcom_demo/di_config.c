@@ -4,6 +4,7 @@
 #include "string.h"
 #include "stdlib.h"
 #include "stdio.h"
+#define MQTT_SEND_TIME (60*200)
 
 char loggerID[8] = "";
 /*
@@ -20,8 +21,9 @@ sMsgQRef uart_mqtt_msgq_1;
 char test_payload[200] = {0};
 UINT8 parameters_update = 0; 
 BOOL first_start = 1;
-
+INT32 BMS_tick;
 char imei_value[16];
+UINT8 DMS_state=0; // updated by MQTT control
 
 
 void GetCSQ()
@@ -173,7 +175,7 @@ void addMsg(INT8 *buff, char *msg)
 void uart_read()
 {
     SIM_MSG_T optionMsg = {0, 0, 0, NULL};
-
+    UINT8 DMS_is_diff=0;
     INT32 totallen = 0;
     INT32 packetlen = 0;
     INT8 nbBattery = 0;
@@ -246,7 +248,7 @@ void uart_read()
         case 0x79:
             nbBattery = buffer[bufferpos + 1] / 3;
             bufferpos += 2;
-            sprintf(payload, "%4d%02d%02d%02d%02d%02d\tCV0:",t1.tm_year,t1.tm_mon,t1.tm_mday,t1.tm_hour,t1.tm_min,t1.tm_sec);
+            sprintf(payload, "%4d%02d%02d%02d%02d%02d\tCV1:",t1.tm_year,t1.tm_mon,t1.tm_mday,t1.tm_hour,t1.tm_min,t1.tm_sec);
             for (INT8 i = 0; i < nbBattery; i++)
             {
                 
@@ -258,7 +260,7 @@ void uart_read()
                 }
                 else
                 {
-                    sprintf(temp,"\tCV%d:%d",i,tmp);
+                    sprintf(temp,"\tCV%d:%d",i+1,tmp);
                     addMsg(payload,temp);
                 }
                 bufferpos += 3;  
@@ -378,18 +380,18 @@ void uart_read()
             bufferpos += 3;
             break;           
         case 0x8c:
-            tmp = buffer[bufferpos + 2];
-            memset(temp, 0, 300);
-            addMsg(payload, "\tSI:");
-            if (tmp & 0x01) addMsg(temp, "Charge MOS ON,");
-            else addMsg(temp, "Charge MOS OFF,");
-            if (tmp & 0x02) addMsg(temp, "Discharge MOS ON,");
-            else addMsg(temp, "Disharge MOS OFF,");    
-            if (tmp & 0x04) addMsg(temp, "Balance ON,");
-            else addMsg(temp, "Balance OFF,");    
-            if (tmp & 0x08) addMsg(temp, "Batt is CONNECTED,");
-            else addMsg(temp, "Batt is DISCONNECTED,");
-            addMsg(payload,temp);            
+            // tmp = buffer[bufferpos + 2];
+            // memset(temp, 0, 300);
+            // addMsg(payload, "\tSI:");
+            // if (tmp & 0x01) addMsg(temp, "Charge MOS ON,");
+            // else addMsg(temp, "Charge MOS OFF,");
+            // if (tmp & 0x02) addMsg(temp, "Discharge MOS ON,");
+            // else addMsg(temp, "Disharge MOS OFF,");    
+            // if (tmp & 0x04) addMsg(temp, "Balance ON,");
+            // else addMsg(temp, "Balance OFF,");    
+            // if (tmp & 0x08) addMsg(temp, "Batt is CONNECTED,");
+            // else addMsg(temp, "Batt is DISCONNECTED,");
+            // addMsg(payload,temp);            
             bufferpos += 3;
             break;    
         case 0x8e:
@@ -602,6 +604,12 @@ void uart_read()
             sprintf(temp, "\tDMS:%d",tmp);
             addMsg(payload,temp);
             bufferpos += 2;
+            // Handle DMS status
+            if(tmp!= DMS_state)
+            {
+                DMS_is_diff =1;
+            }
+
             break;         
         case 0xad:
             tmp= (buffer[bufferpos + 1] << 8) + buffer[bufferpos + 2];
@@ -711,20 +719,41 @@ void uart_read()
             bufferpos++;
             break;
         }
-    SCsysTime_t t;
-    sAPI_GetSysLocalTime(&t);
             
     memset(temp, 0, 300);    
-    // sprintf(temp, ",{\"pc\":\"logger_status\",\"lid\":\"1\",\"d\":\"%d %d:%d:%d %d-%d-%d\"}]",sAPI_ReadVbat(), t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
     addMsg(payload,temp);
-    sAPI_UartWrite(SC_UART3, payload,strlen(payload));
-    // Publish_array(payload);
-            
+
+    if(sAPI_GetTicks()>BMS_tick) //read BMS and send update to server every 1 min
+    {
+        if(sAPI_GetTicks()-BMS_tick>MQTT_SEND_TIME || BMS_tick< (200*5) ) //1 mins
+        {
+            Publish_array(payload);
+            BMS_tick=sAPI_GetTicks();
+            memset(test_payload, 0, 50);
+            sprintf(test_payload, "\n Finish Reading BMS! Send Complete");
+            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
+        }
+    }
+    else
+    {
+        BMS_tick=sAPI_GetTicks();
+    } 
     //print test        
     // sAPI_UartWrite(SC_UART3, payload,strlen(payload));
     
     sAPI_Free(buffer);
     sAPI_Free(payload);
+
+    //DMS state handle
+    if(DMS_is_diff)
+    {
+        memset(test_payload, 0, 50);
+        sprintf(test_payload, "\n DMS diff = %d DMS state = %d",DMS_is_diff, DMS_state);
+        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
+
+        uart_send("DMS",DMS_state);
+        DMS_is_diff=0;
+    }
 }
 
 void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
@@ -742,137 +771,9 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
     char* mqtt_rep = sAPI_Malloc(80);
     char password[31] = {0x4E, 0x57 ,0, 0x1C,0,0,0,0, 0x05, 0x03,0, 0xB2, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36 ,0,0,0,0,0,0,0,0, 0x68,0,0, 0x03, 0x18};
     sAPI_UartWrite(SC_UART,password,31);
-    sAPI_TaskSleep(100); 
-    
-    
-    // if(strncmp(topic,"total_undervoltage",strlen(topic))==0)
-    // {
-    //     code = 0x8f;
-    //     size = 3;
-    //     frame_data=sAPI_Malloc(size);
-    //     frame=sAPI_Malloc(20 + size);
-    //     memset(frame,0,20 + size);
-    //     memset(frame_data,0,size);
-    //     value= atoi(payload);
-    //     UINT8 lowByte = (UINT8) (value & 0xff);
-    //     UINT8 highByte = (UINT8) ((value >> 8) & 0xff);
-    //     frame_data[0] = code;
-    //     frame_data[1] = highByte;
-    //     frame_data[2] = lowByte;
-    //     // Print test
-    //     // sprintf(tmp,"\n\rdata: %02X %02X %02X", frame_data[0],frame_data[1],frame_data[2])   ;
-    //     // sAPI_UartWrite(SC_UART,tmp,strlen(tmp));            
-    //     memcpy(frame,frame_header,11);
-    //     memcpy(frame + 11,frame_data,size);
-    //     memcpy(frame + 11 +size,frame_footer,9);
-    //     //CRC 
-    //     for(UINT8 i=0; i<20+size;i++)
-    //     {
-    //         CRC += frame[i];
-    //     }
-    //     lowByte = (UINT8) (CRC & 0xff);
-    //     highByte = (UINT8) ((CRC >> 8) & 0xff);
-    //     frame[18+size] = highByte;
-    //     frame[19+size] = lowByte;
-    //     // // Print test
-    //     // sAPI_UartWrite(SC_UART,"\r\n",2);
-    //     // for(INT8 i=0; i<20+size; i++)
-    //     // {
-    //     //     sprintf(tmp,"%02X ", frame[i]);
-    //     //     sAPI_UartWrite(SC_UART,tmp,strlen(tmp));
-    //     // }
-    //     // Send to BMS
-    //     sAPI_UartWrite(SC_UART,frame,(20 + size));
-    // }
-    // if(strncmp(topic,"total_overvoltage",strlen(topic))==0)
-    // {
-    // }
-    // if(strncmp(topic,"single_overvoltage",strlen(topic))==0)
-    // {
-    //     code = 0x90;
-    //     size = 3;
-    //     frame_data=sAPI_Malloc(size);
-    //     frame=sAPI_Malloc(20 + size);
-    //     memset(frame,0,20 + size);
-    //     memset(frame_data,0,size);
-    //     value= atoi(payload);
-    //     UINT8 lowByte = (UINT8) (value & 0xff);
-    //     UINT8 highByte = (UINT8) ((value >> 8) & 0xff);
-    //     frame_data[0] = code;
-    //     frame_data[1] = highByte;
-    //     frame_data[2] = lowByte;
-    //     // Print test
-    //     // sprintf(tmp,"\n\rdata: %02X %02X %02X", frame_data[0],frame_data[1],frame_data[2])   ;
-    //     // sAPI_UartWrite(SC_UART,tmp,strlen(tmp));            
-    //     memcpy(frame,frame_header,11);
-    //     memcpy(frame + 11,frame_data,size);
-    //     memcpy(frame + 11 +size,frame_footer,9);
-    //     //CRC 
-    //     for(UINT8 i=0; i<20+size;i++)
-    //     {
-    //         CRC += frame[i];
-    //     }
-    //     lowByte = (UINT8) (CRC & 0xff);
-    //     highByte = (UINT8) ((CRC >> 8) & 0xff);
-    //     frame[18+size] = highByte;
-    //     frame[19+size] = lowByte;
-    //     // // Print test
-    //     // sAPI_UartWrite(SC_UART,"\r\n",2);
-    //     // for(INT8 i=0; i<20+size; i++)
-    //     // {
-    //     //     sprintf(tmp,"%02X ", frame[i]);
-    //     //     sAPI_UartWrite(SC_UART,tmp,strlen(tmp));
-    //     // }
-    //     // Send to BMS
-    //     sAPI_UartWrite(SC_UART,frame,(20 + size));        
-    // }
-    // if(strncmp(topic,"monomer_overvoltage_recovery",strlen(topic))==0)
-    // {
-    //     code = 0x91;
-    // }
-    // if(strncmp(topic,"single_overvoltage_protection_delay",strlen(topic))==0)
-    // {
-    //     code = 0x92;
-    // }            
-    // if(strncmp(topic,"active_equalization_switch",strlen(topic))==0)
-    // {
-    //     code = 0x9A;
-    //     frame_header[3] = 0x14;
-    //     size = 2;
-    //     frame_data=sAPI_Malloc(size);
-    //     frame=sAPI_Malloc(20 + size);
-    //     memset(frame,0,20 + size);
-    //     memset(frame_data,0,size);
-    //     UINT8 lowByte;
-    //     UINT8 highByte;    
-    //     value= atoi(payload);
-    //     if(value== 1) lowByte =1;
-    //     if(value== 0) lowByte =0;      
-    //     frame_data[0] = code;
-    //     frame_data[1] = lowByte;      
-    //     memcpy(frame,frame_header,11);
-    //     memcpy(frame + 11,frame_data,size);
-    //     memcpy(frame + 11 +size,frame_footer,9);
-    //     //CRC 
-    //     for(UINT8 i=0; i<20+size;i++)
-    //     {
-    //         CRC += frame[i];
-    //     }
-    //     lowByte = (UINT8) (CRC & 0xff);
-    //     highByte = (UINT8) ((CRC >> 8) & 0xff);
-    //     frame[18+size] = highByte;
-    //     frame[19+size] = lowByte;
-    //     // Print test
-    //     // sAPI_UartWrite(SC_UART,"\r\n",2);
-    //     // for(INT8 i=0; i<20+size; i++)
-    //     // {
-    //     //     sprintf(tmp,"%02X ", frame[i]);
-    //     //     sAPI_UartWrite(SC_UART,tmp,strlen(tmp));
-    //     // }
-    //     // Send to BMS
-    //     sAPI_UartWrite(SC_UART,frame,(20 + size));         
-    // }    
+    sAPI_TaskSleep(100);   
     SCsysTime_t time_sent;
+    sAPI_GetSysLocalTime(&time_sent);
     if(strncmp(topic,"CMS",strlen(topic))==0)// CMS:0/1 -> OFF/ON 
     {
          
@@ -929,6 +830,7 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
     }
     if(strncmp(topic,"DMS",strlen(topic))==0)
     {
+        
         code = 0xac;
         size = 2;
         frame_header[3] = 0x14;
@@ -941,6 +843,7 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         UINT8 highByte;
         
         value= atoi(payload);
+        DMS_state = value;
         if(value== 1) lowByte =1;
         if(value== 0) lowByte =0;
         
@@ -982,6 +885,12 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tDMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
         Publish_array(mqtt_rep);
 
+    }
+    if(strncmp(topic,"OTA",strlen(topic)) == 0){
+        char url[100] = {0};
+        memset(url, 0, 100);
+        sprintf(url,"http://white-dev.aithings.vn:13579/%s",payload);
+        otaUpdate(url);
     }
     sAPI_Free(tmp);
     sAPI_Free(frame);
@@ -1055,7 +964,6 @@ void MqttReceive(char *subtopic)
         memset(payload_buff,0,200);
                                    
         memset(test_payload, 0, 50);
-        uart_read();
         sprintf(test_payload, "\n Waiting for Update from Server!");
         sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload)); 
         
@@ -1064,18 +972,10 @@ void MqttReceive(char *subtopic)
         if (!((SC_SRV_MQTT != msgQ_data_recv.msg_id) || (0 != msgQ_data_recv.arg1) || (NULL == msgQ_data_recv.arg3))) // correct msg received 
         {                                                                                                                        
             sub_data = (SCmqttData *)(msgQ_data_recv.arg3);                                                                                             
-            // sAPI_UartWrite(SC_UART, (UINT8 *)"recieve topic: ", strlen("recieve topic: "));
-            // sAPI_UartWrite(SC_UART, (UINT8 *)sub_data->topic_P, sub_data->topic_len);
-            // sAPI_UartWrite(SC_UART, (UINT8 *)"\r\n", 2);
-            // sAPI_UartWrite(SC_UART, (UINT8 *)"recieve payload: ", strlen("recieve payload: "));
-            // sAPI_UartWrite(SC_UART, (UINT8 *)sub_data->payload_P, sub_data->payload_len);         
-            // sAPI_UartWrite(SC_UART, (UINT8 *)"\r\n", 2);                                            
-             /*these msg pointer must be free after using, don not change the free order*/   
             memcpy(topic_buff,sub_data->topic_P, sub_data->topic_len);
             memcpy(payload_buff,sub_data->payload_P, sub_data->payload_len);
             topic_buff_len=sub_data->topic_len;
             payload_buff_len=sub_data->payload_len;
-
             sAPI_Free(sub_data->topic_P);                                                          
             sAPI_Free(sub_data->payload_P);                                                         
             sAPI_Free(sub_data);
@@ -1095,54 +995,28 @@ void MqttReceive(char *subtopic)
             memset(test_payload, 0, 50);
             sprintf(test_payload, "\n Command Received from Server!:%s\n",payload_buff);
             sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-            char check[100];
-            memset(check, 0, 50);
-            sprintf(check, payload_buff);
-            sAPI_UartWrite(SC_UART3, check,strlen(check));
-            if(strcmp(check,"ota_update")==0){
-                otaUpdate("http://white-dev.aithings.vn:13579/customer_app.bin");
-            }
-            pos=0;
+            // sAPI_UartWrite(SC_UART3, check,strlen(check));
+
             memset(payload,0,200);
-            while(pos < payload_buff_len)
+            UINT8 post[2];
+            UINT8 cnt=0;
+            for(int i=0;i<strlen(payload_buff);i++)
             {
-                if((payload_buff[pos]=='\t'))
+                if(payload_buff[i]==':') 
                 {
-                    payload_len=0;
-                    while(payload_buff[pos + 1 + payload_len]!='\t')
-                    {
-                        payload[payload_len] = payload_buff [pos + 1 + payload_len];
-                        payload_len+=1;
-                    }
-                    pos += payload_len;
-                    break;
+                    post[cnt] = i;
+                    cnt++;
                 }
-                pos+=1;
-            }   
-            pos = topic_buff_len-1;
-            memset(topic,0,200);
-            while (pos>0)
-            {
-                if(topic_buff[pos]=='/')
-                {
-                    topic_len=topic_buff_len-1-pos;
-                    memcpy(topic,topic_buff+pos+1,topic_len);
-                    //print test
-                    memset(tmp,0,50);
-                    sprintf(tmp,"\r\ntopic: %s",topic);
-                    sAPI_UartWrite(SC_UART3, tmp, strlen(tmp));
-                    memset(tmp,0,10);
-                    sprintf(tmp,"\r\nlen: %d",topic_len);
-                    sAPI_UartWrite(SC_UART3, tmp, strlen(tmp));
-                    break;    
-                }
-                pos-=1;
             }
+            memset(topic, 0, sizeof(topic));
+            memset(payload, 0, sizeof(payload));
+            strncpy(topic,payload_buff+post[0]+1,post[1]-post[0]-1);
+            strcpy(payload,payload_buff+post[1]+1);
             
             sAPI_Free(topic_buff);
             sAPI_Free(payload_buff);
             //Update BMS parameter and send MQTT update
-            // uart_send(topic,payload);
+            uart_send(topic,payload);
             sAPI_Free(topic);
             sAPI_Free(payload);
         }                                                              
@@ -1150,7 +1024,7 @@ void MqttReceive(char *subtopic)
 
 void di_config(void)
 {
-    INT32 BMS_tick;
+
     INT32 nbMsg;
     INT32 ret;
     SIM_MSG_T optionMsg = {0, 0, 0, NULL};
@@ -1214,7 +1088,10 @@ void di_config(void)
         SCsysTime_t t;
         sAPI_GetSysLocalTime(&t);
         memset(test_payload, 0, 50);
-        sprintf(test_payload, "\n>>>> Check Complete %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
+        sprintf(test_payload, "\n>>>> Local Time: %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
+        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+        memset(test_payload, 0, 50);
+        sprintf(test_payload, "\n Imei: %s",imei_value);
         sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
         // Get CSQ
         GetCSQ();
@@ -1265,13 +1142,9 @@ void di_config(void)
         if (SC_MQTT_RESULT_SUCCESS == ret)
         {
             memset(test_payload, 0, 50);
-            sprintf(test_payload, "\n Connect SUCCESSFUL: %s",imei_value);
+            sprintf(test_payload, "\n Connect SUCCESSFUL");
             sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
             uart_read();
-            // char pay[300];
-            // sprintf(pay, "\n %4d%02d%02d%02d%02d%02d\tHello:252525",t.tm_year,t.tm_mon,t.tm_mday,t.tm_hour,t.tm_min,t.tm_sec);
-            // Publish_array(pay);
-            // sAPI_UartWrite(SC_UART3, pay,strlen(pay));
             sAPI_GpioSetValue(9, 0);
             sAPI_TaskSleep(10);
             sAPI_GpioSetValue(9, 1);        
@@ -1301,24 +1174,8 @@ void di_config(void)
         MqttReceive(subtopic);//wait 10 secs for update from server 
         LED_sts^=1;
         sAPI_GpioSetValue(9, LED_sts);        
-
-        if(sAPI_GetTicks()>BMS_tick) //read BMS and send update to server every 1 min
-        {
-            if(sAPI_GetTicks()-BMS_tick>(60*200)) //1 mins
-            {
-                uart_read();
-                BMS_tick = sAPI_GetTicks();
-                memset(test_payload, 0, 50);
-                sprintf(test_payload, "\n Finish Reading BMS! Send Complete");
-                sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));                  
-            }
-        }
-        else
-        {
-            BMS_tick=sAPI_GetTicks();
-        }
+        uart_read();
         
- 
 
         // memset(test_payload,0,sizeof(test_payload));
         // sprintf(test_payload, "[{\"pc\":\"Test\",\"lid\":\"1\",\"d\":%d}]",99);

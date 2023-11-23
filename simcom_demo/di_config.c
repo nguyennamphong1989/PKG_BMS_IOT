@@ -199,16 +199,16 @@ void uart_read()
     }
     //print test
     // memset(temp, 0, 50);
-    // sprintf(temp, "\n Queue-nbMsg = %d", nbMsg);
-    // sAPI_UartWrite(SC_UART3, temp,strlen(temp));
+    sprintf(temp, "\n Queue-nbMsg = %d", nbMsg);
+    sAPI_UartWrite(SC_UART3, temp,strlen(temp));
 
     sAPI_UartWrite(SC_UART, request, 21);
     sAPI_TaskSleep(200);
     sAPI_MsgQPoll(simcomUI_msgq, &nbMsg);
     // print test
-    // memset(temp, 0, 50);
-    // sprintf(temp, "\n Readall nbMsg = %d", nbMsg);
-    // sAPI_UartWrite(SC_UART3, temp,strlen(temp));
+    memset(temp, 0, 50);
+    sprintf(temp, "\n Readall nbMsg = %d", nbMsg);
+    sAPI_UartWrite(SC_UART3, temp,strlen(temp));
 
     while (nbMsg > 0)
     {

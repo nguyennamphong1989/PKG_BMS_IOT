@@ -4,13 +4,13 @@
 #include "string.h"
 #include "stdlib.h"
 #include "stdio.h"
-#define MQTT_SEND_TIME (30*200) //30 secs
+#define MQTT_SEND_TIME (10*200) //10 secs
 #define LED_BLINK_TIME (3*200) //3 secs
 #define SECTOR_1 0
 #define SECTOR_2 4096
 #define ERASE_SIZE 4096
 char loggerID[8] = "";
-UINT16 version = 9;
+UINT16 version = 16;
 /*
 Từ khóa "extern" chỉ ra 1 biến hoặc 1 hàm đã được khai báo ở 1 nơi
 khác trong mã nguồn.
@@ -18,11 +18,10 @@ khác trong mã nguồn.
 extern void PrintfResp(INT8 *format); // Đã khai báo trong hàm simcom_os.h
 extern sMsgQRef urc_mqtt_msgq_1; // Đã khai báo trong hàm simcom_demo.h
 INT8 request[21] = {0x4e,0x57, 0,0x13, 0,0,0,0, 0x06, 0x03, 0, 0, 0,0,0,0, 0x68, 0,0,0x01,0x29};
-
 extern sMsgQRef simcomUI_msgq; // Đã khai báo trong hàm simcom_demo.h
 sMsgQRef uart_mqtt_msgq_1;
 // INT8 dataBMS[1024] = {0};
-char test_payload[200] = {0};
+char test_payload[400] = {0};
 UINT8 parameters_update = 0; 
 BOOL first_start = 1;
 INT32 BMS_tick;
@@ -30,7 +29,7 @@ INT32 LED_tick;
 char imei_value[16];
 UINT8 DMS_state= 0; // updated by MQTT control
 UINT8 DMS_is_diff=0;
-
+UINT8 newupdate=0;
 void GetCSQ()
 {
     UINT8 csq;
@@ -163,28 +162,29 @@ void uart_read()
     INT32 nbMsg;
     INT32 tmp;
     int32_t tmp1;
-    char *buffer = sAPI_Malloc(1024);
-    char *payload= sAPI_Malloc(6000);
-    memset(payload, 0, 6000);
+    char *buffer = sAPI_Malloc(1000);
+    char *payload= sAPI_Malloc(1000);
+    memset(payload, 0, 1000);
     char temp[300];
     //Clear Queue
     sAPI_MsgQPoll(simcomUI_msgq, &nbMsg);
     while (nbMsg > 0)
     {
         sAPI_MsgQRecv(simcomUI_msgq, &optionMsg, 200);
-        sAPI_Free(optionMsg.arg3);
+        // sAPI_Free(optionMsg.arg3);
         sAPI_MsgQPoll(simcomUI_msgq, &nbMsg);
     }
+
     //print test
-    // memset(temp, 0, 50);
+    memset(temp, 0, sizeof(temp));
     sprintf(temp, "\n Queue-nbMsg = %d", nbMsg);
     sAPI_UartWrite(SC_UART3, temp,strlen(temp));
 
     sAPI_UartWrite(SC_UART, request, 21);
-    sAPI_TaskSleep(200);
+    sAPI_TaskSleep(300);
     sAPI_MsgQPoll(simcomUI_msgq, &nbMsg);
     // print test
-    memset(temp, 0, 50);
+    memset(temp, 0, sizeof(temp));
     sprintf(temp, "\n Readall nbMsg = %d", nbMsg);
     sAPI_UartWrite(SC_UART3, temp,strlen(temp));
 
@@ -198,12 +198,12 @@ void uart_read()
 
     // sAPI_Free(optionMsg.arg3);
     packetlen = bufferpos;
-    //print test
-    // memset(temp, 0, 50);
+    // //print test
+    // memset(temp, 0, sizeof(temp));
     // sprintf(temp, "\n BMS-RspLength = %d", packetlen);
     // sAPI_UartWrite(SC_UART3, temp,strlen(temp));
     // sAPI_UartWrite(SC_UART3,"\n buffer:",9);
-    // memset(temp, 0, 50);    
+    // memset(temp, 0, sizeof(temp));    
     // for(bufferpos=0;bufferpos<packetlen;bufferpos++)
     // {
     //     sprintf(temp,"%02X ", buffer[bufferpos]);
@@ -711,7 +711,7 @@ void uart_read()
             break;
         }
             
-    memset(temp, 0, 300);
+    memset(temp, 0, sizeof(temp));
     tmp = sAPI_GetTicks()/200;
     sprintf(temp, "\tMCU:%d\tVER:%d",tmp,version);    
     addMsg(payload,temp);
@@ -962,7 +962,7 @@ void MqttReceive(char *subtopic)
         sprintf(test_payload, "\n Waiting for Update from Server!");
         sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload)); 
         
-        sAPI_MsgQRecv(urc_mqtt_msgq_1, &msgQ_data_recv, (200));//timeout 1 secs 
+        sAPI_MsgQRecv(urc_mqtt_msgq_1, &msgQ_data_recv, 2*200);//timeout 1 secs 
                                                               
         if (!((SC_SRV_MQTT != msgQ_data_recv.msg_id) || (0 != msgQ_data_recv.arg1) || (NULL == msgQ_data_recv.arg3))) // correct msg received 
         {                                                                                                                        
@@ -1011,27 +1011,101 @@ void MqttReceive(char *subtopic)
             sAPI_Free(topic_buff);
             sAPI_Free(payload_buff);
 
+            //print test
             sAPI_UartWrite(SC_UART3, "\n Parameter: ", strlen("\n Parameter: "));
             sAPI_UartWrite(SC_UART3, topic, strlen(topic));
             sAPI_UartWrite(SC_UART3, "\r\n", 2);
             sAPI_UartWrite(SC_UART3, " Value: ", strlen(" Value: "));
             sAPI_UartWrite(SC_UART3, payload, strlen(payload));         
             sAPI_UartWrite(SC_UART3, "\r\n", 2);
-
-
-
             //Update BMS parameter 
             uart_send(topic,payload);
             sAPI_Free(topic);
             sAPI_Free(payload);
-            //read BMS and send MQTT update
-            uart_read();
+            newupdate =1;
         }                                                              
 }
+void NTP_update()
+{
+    sMsgQRef ntpUIResp_msgq;
+    UINT32 ret = 0;
+    SCsysTime_t currUtcTime;
+    INT8 buff[220]={0};
+    INT8 *resp = NULL;
+    SIM_MSG_T ntp_result = {SC_SRV_NONE, -1, 0, NULL};
+    if(NULL == ntpUIResp_msgq)
+    {
+        SC_STATUS status;
+        status = sAPI_MsgQCreate(&ntpUIResp_msgq, "htpUIResp_msgq", sizeof(SIM_MSG_T), 4, SC_FIFO);
+        if(SC_SUCCESS != status)
+        {
+            resp = "\r\nNTP Update Fail!\r\n";
+            sAPI_UartWrite(SC_UART3,(UINT8*)resp,strlen(resp));
+        }
+    }
 
+    memset(&currUtcTime,0,sizeof(currUtcTime));
+
+    sAPI_GetSysLocalTime(&currUtcTime);
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload,"\n [CNTP] sAPI_GetSysLocalTime %d - %d - %d - %d : %d : %d   %d",currUtcTime.tm_year,currUtcTime.tm_mon,currUtcTime.tm_mday,
+        currUtcTime.tm_hour,currUtcTime.tm_min,currUtcTime.tm_sec,currUtcTime.tm_wday);
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+    
+    ret = sAPI_NtpUpdate(SC_NTP_OP_SET, "216.239.35.0", 0, NULL);                        //Unavailable addr may cause long time suspend
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload,"\n [CNTP] func[%s] line[%d] ret[%d]", __FUNCTION__,__LINE__,ret);
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+
+    ret = sAPI_NtpUpdate(SC_NTP_OP_GET, buff, 0, NULL);
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload,"\n [CNTP] func[%s] line[%d] ret[%d] buff[%s]", __FUNCTION__,__LINE__,ret, buff);
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+
+    ret = sAPI_NtpUpdate(SC_NTP_OP_EXC, NULL, 0, ntpUIResp_msgq);
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload,"\n [CNTP] func[%s] line[%d] ret[%d] ", __FUNCTION__,__LINE__,ret );
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+    do
+    {
+        sAPI_MsgQRecv(ntpUIResp_msgq, &ntp_result, SC_SUSPEND);
+
+        if(SC_SRV_NTP != ntp_result.msg_id )                  //wrong msg received 
+        {
+            memset(test_payload, 0, sizeof(test_payload));
+            sprintf(test_payload,"\n Wrong msg");
+            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+            ntp_result.msg_id = SC_SRV_NONE;                   //para reset
+            ntp_result.arg1 = -1;
+            ntp_result.arg3 = NULL;
+            continue;
+        }
+        if(SC_NTP_OK == ntp_result.arg1)                        //it means update succeed
+        {
+            memset(test_payload, 0, sizeof(test_payload));
+            sprintf(test_payload,"\n NTP successful");
+            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+            break;
+        }
+        else
+        {
+            memset(test_payload, 0, sizeof(test_payload));
+            sprintf(test_payload,"\n NTP Failed");
+            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+            break;
+        }
+    }while(1);
+
+    memset(&currUtcTime,0,sizeof(currUtcTime));
+    sAPI_GetSysLocalTime(&currUtcTime);
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload,"\n [CNTP] sAPI_GetSysLocalTime %d - %d - %d - %d : %d : %d   %d",currUtcTime.tm_year,currUtcTime.tm_mon,currUtcTime.tm_mday,
+        currUtcTime.tm_hour,currUtcTime.tm_min,currUtcTime.tm_sec,currUtcTime.tm_wday);
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+    
+}
 void di_config(void)
 {
-
     INT32 nbMsg;
     INT32 ret;
     SIM_MSG_T optionMsg = {0, 0, 0, NULL};
@@ -1081,88 +1155,49 @@ void di_config(void)
     // sAPI_GpioSetDirection(13, 1);
     // sAPI_GpioSetValue(13, 1);
  
-    sAPI_NetworkSetCtzu(1);
+    sAPI_NetworkSetCtzu(1);//UTC timezone
     sAPI_NetworkInit();  
 
     ret = sAPI_ReadFlash(SECTOR_1, (UINT8*)&DMS_state, sizeof(DMS_state));
     if(ret==0)
     {
+        if(DMS_state>1) DMS_state=0;
         memset(test_payload, 0, sizeof(test_payload));
         sprintf(test_payload, "\n DMS state = %d",DMS_state);
         sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // if(DMS_state>1) DMS_state=0;
+
     }
     else
     {
         sAPI_UartWrite(SC_UART3,"\r\n Load DMS state Failed",24);
         DMS_state=0;
     }
+    SCsysTime_t t;
+    sAPI_GetSysLocalTime(&t);
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload, "\n\n>> UTC Time: %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+    memset(test_payload, 0, sizeof(test_payload));
+    sprintf(test_payload, "\n Imei: %s Ver: %d",imei_value,version);
+    sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+    // Get CSQ
+    GetCSQ();
+
 
     LED_tick = sAPI_GetTicks();
     while (1)
     {
-        SCsysTime_t t;
-        sAPI_GetSysLocalTime(&t);
-        memset(test_payload, 0, sizeof(test_payload));
-        sprintf(test_payload, "\n\n>> Local Time: %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
-        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        memset(test_payload, 0, sizeof(test_payload));
-        sprintf(test_payload, "\n Imei: %s",imei_value);
-        sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // Get CSQ
-        GetCSQ();
 
-
+        //Connect Mqtt server
         ret = sAPI_MqttStart(-1);
-        // if (SC_MQTT_RESULT_SUCCESS == ret)
-        // {
-        //     memset(test_payload, 0, sizeof(test_payload));
-        //     sprintf(test_payload,"\n MQTT Start Successful!");
-        //     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // }
-        // else
-        // {
-        //     memset(test_payload, 0, sizeof(test_payload));
-        //     sprintf(test_payload,"\n Start FAIL,ERRCODE = [%d]", ret);
-        //     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // }
-        // sAPI_TaskSleep(100);        
         ret = sAPI_MqttAccq(0, NULL, 0, client_id, 0, urc_mqtt_msgq_1);
-        // if (SC_MQTT_RESULT_SUCCESS == ret)
-        // {
-        //     memset(test_payload, 0, sizeof(test_payload));
-        //     sprintf(test_payload, "\n Init SUCCESSFUL");
-        //     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // }
-        // else
-        // {
-        //     memset(test_payload, 0, sizeof(test_payload));
-        //     sprintf(test_payload, "\n Init FAIL, ERRCODE = [%d]",ret);
-        //     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // }        
-        // sAPI_TaskSleep(100);
         ret = sAPI_MqttCfg(0, NULL, 0, 0, 0);
-        // if(SC_MQTT_RESULT_SUCCESS == ret)
-        // {
-        //     memset(test_payload, 0, sizeof(test_payload));
-        //     sprintf(test_payload, "\n Config SUCCESSFUL");
-        //     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // }
-        // else
-        // {
-        //     memset(test_payload, 0, sizeof(test_payload));
-        //     sprintf(test_payload,"\n Config FAIL,ERRCODE = [%d]",ret);
-        //     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-        // }        
-        // sAPI_TaskSleep(100);
         ret = sAPI_MqttConnect(0, NULL, 0, host, 60, 0, usrName, usrPwd);
         if (SC_MQTT_RESULT_SUCCESS == ret)
         {
-            
             memset(test_payload, 0, sizeof(test_payload));
             sprintf(test_payload, "\n Connect SUCCESSFUL");
-            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
-             
+            sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));  
         }
         else
         {
@@ -1170,21 +1205,6 @@ void di_config(void)
             // sprintf(test_payload, "\n Connect FAIL, ERRCODE = [%d]",ret);
             // sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
         }
-        
-        //read BMS and send update to server periodically
-        if(sAPI_GetTicks()>BMS_tick) 
-        {
-            if(sAPI_GetTicks()-BMS_tick>MQTT_SEND_TIME ) //every SEND_TIME
-            {
-                uart_read();
-                BMS_tick=sAPI_GetTicks();
-            }
-        }
-        else
-        {
-            BMS_tick=sAPI_GetTicks();
-        } 
-
         //Subcribe MQTT
         ret = sAPI_MqttSub(0,SubHost, strlen(SubHost), 0, 0);
         if (SC_MQTT_RESULT_SUCCESS == ret)
@@ -1201,9 +1221,33 @@ void di_config(void)
             sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
             break;
         }        
+        
         //wait 1 secs for update from server; If receive, update BMS and send feedback to server  
         MqttReceive(subtopic);
-        
+        //read BMS and send update to server periodically
+        if(sAPI_GetTicks()>BMS_tick) 
+        {
+            if(sAPI_GetTicks()-BMS_tick>MQTT_SEND_TIME || newupdate==1) //every SEND_TIME
+            {
+                sAPI_GetSysLocalTime(&t);
+                memset(test_payload, 0, sizeof(test_payload));
+                sprintf(test_payload, "\n\n>> UTC Time: %02d:%02d:%02d %d-%d-%d",t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon, t.tm_year);
+                sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+                memset(test_payload, 0, sizeof(test_payload));
+                sprintf(test_payload, "\n Imei: %s Ver: %d",imei_value,version);
+                sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));
+                // Get CSQ
+                GetCSQ();
+                uart_read();
+                BMS_tick=sAPI_GetTicks();
+                newupdate=0;
+            }
+        }
+        else
+        {
+            BMS_tick=sAPI_GetTicks();
+        } 
+
         //Connection indicator LED
         if(sAPI_GetTicks() - LED_tick > LED_BLINK_TIME)
         {
@@ -1212,13 +1256,7 @@ void di_config(void)
             LED_tick = sAPI_GetTicks();
         }    
 
-
-
-        // memset(test_payload,0,sizeof(test_payload));
-        // sprintf(test_payload, "[{\"pc\":\"Test\",\"lid\":\"1\",\"d\":%d}]",99);
-        // Publish_array(test_payload);
-        
-        
+       
         // sAPI_TaskSleep((5) * 200); // sleep 10 sec 
         // //MQTT Disconnect
         // ret = sAPI_MqttDisConnect(0, NULL, 0, 60);

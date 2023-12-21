@@ -10,11 +10,14 @@
 #define SECTOR_2 4096
 #define ERASE_SIZE 4096
 char loggerID[8] = "";
-UINT16 version = 18;
-/*
-Từ khóa "extern" chỉ ra 1 biến hoặc 1 hàm đã được khai báo ở 1 nơi
-khác trong mã nguồn.
-*/
+UINT16 version = 23;
+
+    char client_id[100];
+    char usrName[100];
+    char usrPwd[100];
+    char host[100] = {0};
+    char subtopic [100]={};
+
 extern void PrintfResp(INT8 *format); // Đã khai báo trong hàm simcom_os.h
 extern sMsgQRef urc_mqtt_msgq_1; // Đã khai báo trong hàm simcom_demo.h
 INT8 request[21] = {0x4e,0x57, 0,0x13, 0,0,0,0, 0x06, 0x03, 0, 0, 0,0,0,0, 0x68, 0,0,0x01,0x29};
@@ -30,12 +33,14 @@ char imei_value[16];
 UINT8 DMS_state= 0; // updated by MQTT control
 UINT8 DMS_is_diff=0;
 UINT8 newupdate=0;
+UINT8 csq;
+UINT32 cpuUsedRate, heapFreeSize;
+
 void uart_send(char *topic, char* payload);
 void GetCSQ()
 {
-    UINT8 csq;
     UINT8 ret;
-    char *NetResp = sAPI_Malloc(100);
+    char NetResp[100];
     ret = sAPI_NetworkGetCsq(&csq);
     if(ret == SC_NET_SUCCESS)
     {
@@ -46,7 +51,6 @@ void GetCSQ()
     {
         sAPI_UartWrite(SC_UART3, "\n Get csq falied!",18);
     }
-    sAPI_Free(NetResp);
 }
 
 void GetCnmp()
@@ -137,7 +141,7 @@ void GetCpsi()
 
 void Publish_array(char *input)
 {
-    char *topic = sAPI_Malloc(100);
+    char topic[100];
     memset(topic, 0, 100);
     sprintf(topic, "pkg/%s/data",imei_value);
     sAPI_MqttTopic(0, topic, strlen(topic));
@@ -162,16 +166,15 @@ void uart_read()
     INT32 nbMsg;
     INT32 tmp;
     int32_t tmp1;
-    char *buffer = sAPI_Malloc(1000);
-    char *payload= sAPI_Malloc(1000);
+    char buffer[1000];
+    char payload[1000];
+    char temp[300];
     memset(payload, 0, 1000);
-    char *temp= sAPI_Malloc(300);
     //Clear Queue
     sAPI_MsgQPoll(simcomUI_msgq, &nbMsg);
     while (nbMsg > 0)
     {
         sAPI_MsgQRecv(simcomUI_msgq, &optionMsg, 200);
-        // sAPI_Free(optionMsg.arg3);
         sAPI_MsgQPoll(simcomUI_msgq, &nbMsg);
     }
 
@@ -217,10 +220,12 @@ void uart_read()
     bufferpos = 0;
     if (buffer[bufferpos] != 0x4e || buffer[bufferpos + 1] != 0x57) // 2 bytes header
     {
+       sAPI_GetSystemInfo(&cpuUsedRate,&heapFreeSize);
+        GetCSQ();     
         tmp = sAPI_GetTicks()/200;
-        sprintf(payload, "%4d%02d%02d%02d%02d%02d\tMCU:%d\tVER:%d",t1.tm_year,t1.tm_mon,t1.tm_mday,t1.tm_hour,t1.tm_min,t1.tm_sec,tmp,version);
+        sprintf(payload, "%4d%02d%02d%02d%02d%02d\tDMSS:%d\tCPU:%d\tHFS:%d\tCSQ:%d\tMCU:%d\tVER:%d",
+        t1.tm_year,t1.tm_mon,t1.tm_mday,t1.tm_hour,t1.tm_min,t1.tm_sec,DMS_state,cpuUsedRate,heapFreeSize,csq,tmp,version);
         Publish_array(payload);
-        sAPI_Free(payload);
         return;
     }
         
@@ -715,7 +720,8 @@ void uart_read()
             
     memset(temp, 0, sizeof(temp));
     tmp = sAPI_GetTicks()/200;
-    sprintf(temp, "\tMCU:%d\tVER:%d",tmp,version);    
+    GetCSQ();
+    sprintf(temp, "\tDMSS:%d\tCPU:%d\tHFS:%d\tCSQ:%d\tMCU:%d\tVER:%d",DMS_state,cpuUsedRate,heapFreeSize,csq,tmp,version);    
     addMsg(payload,temp);
     Publish_array(payload);
 
@@ -725,9 +731,6 @@ void uart_read()
     sAPI_UartWrite(SC_UART3, test_payload,strlen(test_payload));   
     // sAPI_UartWrite(SC_UART3, payload,strlen(payload));
     
-    sAPI_Free(buffer);
-    sAPI_Free(payload);
-    sAPI_Free(temp);
 
 }
 void otaUpdate(INT8 *url)
@@ -779,13 +782,13 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
     UINT8 size =0;
     UINT16 value=0;
     UINT16 CRC=0;
-    char* tmp = sAPI_Malloc(60);
+    char tmp[60];
     memset(tmp,0,sizeof(tmp));
-    UINT8 *frame; //frame = frame_header + frame_data +frame_footer
+    // UINT8 *frame; //frame = frame_header + frame_data +frame_footer
     UINT8 frame_header[] = {0x4e,0x57, 0,0x15, 0,0,0,0, 0x02, 3, 0}; //11 bytes
     UINT8 frame_footer[] = {0,0,0,0, 0x68, 0,0,0,0}; //9 bytes
-    UINT8 *frame_data;
-    char* mqtt_rep = sAPI_Malloc(80);
+    // UINT8 *frame_data;
+    char mqtt_rep[80];
     // char password[31] = {0x4E, 0x57 ,0, 0x1C,0,0,0,0, 0x05, 0x03,0, 0xB2, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36 ,0,0,0,0,0,0,0,0, 0x68,0,0, 0x03, 0x18};
     // sAPI_UartWrite(SC_UART,password,31);
     sAPI_TaskSleep(100);   
@@ -797,8 +800,8 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         code = 0xab;
         frame_header[3] = 0x14;
         size = 2;
-        frame_data=sAPI_Malloc(size);
-        frame=sAPI_Malloc(20 + size);
+        UINT8 frame_data[2];
+        UINT8 frame[22];
         memset(frame,0,20 + size);
         memset(frame_data,0,size);
         UINT8 lowByte;
@@ -843,8 +846,6 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         // memset(mqtt_rep,0,sizeof(mqtt_rep));
         // sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tCMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
         // Publish_array(mqtt_rep);
-        sAPI_Free(frame);
-        sAPI_Free(frame_data);
 
     }
     if(strncmp(topic,"DMS",strlen(topic))==0)
@@ -853,8 +854,8 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         code = 0xac;
         size = 2;
         frame_header[3] = 0x14;
-        frame_data=sAPI_Malloc(size);
-        frame=sAPI_Malloc(20 + size);
+        UINT8 frame_data[2];
+        UINT8 frame[22];
         memset(frame,0,20 + size);
         memset(frame_data,0,size);
         char read_dischargMOS[21] = {0x4E, 0x57, 0x00, 0x13, 0,0,0,0, 0x03, 0x03, 0, 0xAC,0,0,0,0, 0x68, 0, 0, 0x01, 0xD2};
@@ -928,19 +929,14 @@ void uart_send(char *topic, char* payload) // SEND TO BMS and SEND MQTT UPDATE
         // memset(mqtt_rep,0,sizeof(mqtt_rep));
         // sprintf(mqtt_rep, "%4d%02d%02d%02d%02d%02d\tDMS:%d",time_sent.tm_year,time_sent.tm_mon,time_sent.tm_mday,time_sent.tm_hour,time_sent.tm_min,time_sent.tm_sec,value);
         // Publish_array(mqtt_rep);
-        sAPI_Free(frame);
-        sAPI_Free(frame_data);
 
     }
     if(strncmp(topic,"OTA",strlen(topic)) == 0){
-        char *url = sAPI_Malloc(100);
+        char url[100];
         memset(url, 0, 100);
         sprintf(url,"http://white-dev.aithings.vn:13579/%s",payload);
         otaUpdate(url);
-        sAPI_Free(url);
     }
-    sAPI_Free(tmp);
-    sAPI_Free(mqtt_rep);
     sAPI_TaskSleep(200); // wait BMS finish sending response
 }
 
@@ -951,11 +947,11 @@ void MqttReceive(char *subtopic)
         UINT16 topic_buff_len=0;
         UINT16 payload_buff_len=0;
 
-        char *topic= sAPI_Malloc(200);
-        char *payload= sAPI_Malloc(200);
-        char *topic_buff = sAPI_Malloc(300);
+        char topic[200];
+        char payload[200];
+        char topic_buff[300];
+        char payload_buff[300];
         memset(topic_buff,0,sizeof(topic_buff));
-        char *payload_buff = sAPI_Malloc(300);
         memset(payload_buff,0,sizeof(payload_buff));
                                    
         // memset(test_payload, 0, sizeof(test_payload));
@@ -1008,9 +1004,6 @@ void MqttReceive(char *subtopic)
             strncpy(topic,payload_buff+post[0]+1,post[1]-post[0]-1);
             strncpy(payload,payload_buff+post[1]+1,payload_buff_len-post[1]-1);
             
-            sAPI_Free(topic_buff);
-            sAPI_Free(payload_buff);
-
             //print test
             sAPI_UartWrite(SC_UART3, "\n Parameter: ", strlen("\n Parameter: "));
             sAPI_UartWrite(SC_UART3, topic, strlen(topic));
@@ -1020,14 +1013,8 @@ void MqttReceive(char *subtopic)
             sAPI_UartWrite(SC_UART3, "\r\n", 2);
             //Update BMS parameter 
             uart_send(topic,payload);
-            sAPI_Free(topic);
-            sAPI_Free(payload);
             newupdate =1;
         }
-        sAPI_Free(topic);                                                              
-        sAPI_Free(payload);
-        sAPI_Free(payload_buff);
-        sAPI_Free(topic_buff);
 }
 // void NTP_update()
 // {
@@ -1104,16 +1091,9 @@ void MqttReceive(char *subtopic)
 void di_config(void)
 {
     INT32 ret;
-    char *client_id = NULL;
-    char *usrName = NULL;
-    char *usrPwd = NULL;
-    char host[100] = {0};
-    char subtopic [100]={};
+
     uint8_t LED_sts=0;
-    UINT32 cpuUsedRate, heapFreeSize;
-    usrName = sAPI_Malloc(100);
-    usrPwd = sAPI_Malloc(100);
-    client_id = sAPI_Malloc(100);
+
 
     memset(test_payload, 0, sizeof(test_payload));
     sprintf(test_payload, "\n>>>>---- Power-On -----<<<<");
